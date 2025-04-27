@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestãoEstudioTatuagem.Views.TelaDeLogin"
+             Title="Login"
+             BackgroundColor="Black">
+
+    <VerticalStackLayout Spacing="20" Padding="30">
+
+        <!-- Frame para criar o contêiner com os campos de entrada -->
+        <Frame BorderColor="Gray" BackgroundColor="#242424" Padding="20" CornerRadius="10" HorizontalOptions="Center" WidthRequest="350" HeightRequest="300">
+            <StackLayout Spacing="15">
+
+                <Label Text="E-mail"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="16" />
+                
+                <Entry Placeholder="Digite seu nome"
+                       FontSize="16"
+                       HeightRequest="50"
+                       HorizontalOptions="FillAndExpand" 
+                       TextColor="White"
+                       BackgroundColor="#333333"/>
+                
+                <Label Text="Senha"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="16" />
+                
+                <!-- Entry para senha -->
+                <Entry Placeholder="Digite sua senha"
+                       IsPassword="True"
+                       FontSize="16"
+                       HeightRequest="50"
+                       HorizontalOptions="FillAndExpand" 
+                       TextColor="White"
+                       BackgroundColor="#333333"/>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Não tem uma conta?" TextColor="White" FontSize="14"/>
+                    <Label Text="Cadastrar-se"
+                           TextColor="LightBlue"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           Margin="5,0,0,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCadastrarClicked" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+            </StackLayout>
+            
+        </Frame>
+
+    </VerticalStackLayout>
+
+</ContentPage>

@@ -1,0 +1,165 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+             x:Class="GestaoEstudioTatuagem.Views.TelaDeLogin"
+             BackgroundColor="#0f0f0f">
+
+    <ContentPage.BindingContext>
+        <viewmodels:TelaDeLoginViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <Image Source="logo.png"
+                   HeightRequest="100"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Ink Manager"
+                   FontSize="24"
+                   HorizontalOptions="Center"
+                   TextColor="#a12330"
+                   FontAttributes="Bold" />
+
+            <Label Text="{Binding FormSubtitle}"
+                   FontSize="14"
+                   HorizontalOptions="Center"
+                   TextColor="#888" />
+
+            <!-- Nome -->
+            <StackLayout IsVisible="{Binding IsNotLogin}">
+                <Label Text="Nome completo" TextColor="#ccc" />
+                <Entry Placeholder="Seu nome completo"
+                       Text="{Binding FullName}"
+                       BackgroundColor="#1a1a1a"
+                       TextColor="White"
+                       PlaceholderColor="#555"
+                       HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+            <!-- Email -->
+            <Label Text="Email" TextColor="#ccc" />
+            <Entry Placeholder="seu@email.com"
+                   Text="{Binding Email}"
+                   Keyboard="Email"
+                   BackgroundColor="#1a1a1a"
+                   TextColor="White"
+                   PlaceholderColor="#555"
+                   HorizontalOptions="FillAndExpand" />
+
+            <!-- Telefone -->
+            <StackLayout IsVisible="{Binding IsNotLogin}">
+                <Label Text="Telefone" TextColor="#ccc" />
+                <Entry Placeholder="(00) 00000-0000"
+                       Text="{Binding Phone}"
+                       Keyboard="Telephone"
+                       BackgroundColor="#1a1a1a"
+                       TextColor="White"
+                       PlaceholderColor="#555"
+                       HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+            <!-- Endereço -->
+            <StackLayout IsVisible="{Binding IsNotLogin}">
+                <Label Text="Endereço" TextColor="#ccc" />
+                <Entry Placeholder="Rua, número, bairro, cidade"
+                       Text="{Binding Address}"
+                       BackgroundColor="#1a1a1a"
+                       TextColor="White"
+                       PlaceholderColor="#555"
+                       HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+            <!-- Data de nascimento -->
+            <StackLayout IsVisible="{Binding IsNotLogin}">
+                <Label Text="Data de Nascimento" TextColor="#ccc" />
+                <DatePicker Date="{Binding BirthDate}"
+                            TextColor="White"
+                            BackgroundColor="#1a1a1a"
+                            MinimumDate="1900-01-01"
+                            MaximumDate="{x:Static sys:DateTime.Today}" />
+            </StackLayout>
+
+            <!-- CPF (opcional) -->
+            <StackLayout IsVisible="{Binding IsNotLogin}">
+                <Label Text="CPF (opcional)" TextColor="#ccc" />
+                <Entry Placeholder="000.000.000-00"
+                       Text="{Binding CPF}"
+                       Keyboard="Numeric"
+                       BackgroundColor="#1a1a1a"
+                       TextColor="White"
+                       PlaceholderColor="#555"
+                       HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+            <!-- Senha -->
+            <Label Text="Senha" TextColor="#ccc" />
+            <StackLayout Orientation="Horizontal">
+                <Entry Placeholder="••••••••"
+                       Text="{Binding Password}"
+                       IsPassword="{Binding IsPasswordHidden}"
+                       BackgroundColor="#1a1a1a"
+                       TextColor="White"
+                       PlaceholderColor="#555"
+                       HorizontalOptions="FillAndExpand" />
+                <ImageButton Source="eye_icon.png"
+                             Command="{Binding TogglePasswordCommand}"
+                             BackgroundColor="Transparent"
+                             WidthRequest="30"
+                             HeightRequest="30" />
+            </StackLayout>
+
+            <!-- Confirmar senha -->
+            <StackLayout IsVisible="{Binding IsNotLogin}">
+                <Label Text="Confirmar senha" TextColor="#ccc" />
+                <StackLayout Orientation="Horizontal">
+                    <Entry Placeholder="••••••••"
+                           Text="{Binding ConfirmPassword}"
+                           IsPassword="{Binding IsConfirmPasswordHidden}"
+                           BackgroundColor="#1a1a1a"
+                           TextColor="White"
+                           PlaceholderColor="#555"
+                           HorizontalOptions="FillAndExpand" />
+                    <ImageButton Source="eye_icon.png"
+                                 Command="{Binding ToggleConfirmPasswordCommand}"
+                                 BackgroundColor="Transparent"
+                                 WidthRequest="30"
+                                 HeightRequest="30" />
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Esqueci minha senha -->
+            <Label Text="Esqueci minha senha"
+                   TextColor="#a12330"
+                   FontAttributes="Bold"
+                   HorizontalOptions="End"
+                   IsVisible="{Binding IsLogin}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <!-- Botão principal -->
+            <Button Text="{Binding SubmitText}"
+                    Command="{Binding SubmitCommand}"
+                    BackgroundColor="#800020"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
+            <!-- Alternar login/cadastro -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                <Label Text="{Binding ToggleText}" TextColor="#aaa" />
+                <Label Text="{Binding ToggleLink}"
+                       TextColor="#a12330"
+                       FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleFormCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

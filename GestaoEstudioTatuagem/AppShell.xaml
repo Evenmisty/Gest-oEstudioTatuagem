@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="GestaoEstudioTatuagem.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:GestaoEstudioTatuagem.Views"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Gestão Estúdio Tatuagem">
+
+    <FlyoutItem Title="Login">
+        <ShellContent Title="Login" ContentTemplate="{DataTemplate views:TelaDeLogin}" Route="TelaDeLogin" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Dashboard">
+        <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate views:Dashboard}" Route="Dashboard" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Agenda">
+        <ShellContent Title="Agenda" ContentTemplate="{DataTemplate views:Agenda}" Route="Agenda" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Clientes">
+        <ShellContent Title="Lista de Clientes" ContentTemplate="{DataTemplate views:ListaDeClientes}" Route="ListaDeClientes" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Tatuadores">
+        <ShellContent Title="Lista de Tatuadores" ContentTemplate="{DataTemplate views:ListaDeTatuadores}" Route="ListaDeTatuadores" />
+    </FlyoutItem>
+
+    <!-- As próximas rotas são acessadas via navegação (Push) e não precisam aparecer no menu -->
+    <ShellContent Title="Detalhes do Cliente" ContentTemplate="{DataTemplate views:DetalhesDoCliente}" Route="DetalhesDoCliente" IsVisible="False" />
+    <ShellContent Title="Detalhes do Tatuador" ContentTemplate="{DataTemplate views:DetalhesDoTatuador}" Route="DetalhesDoTatuador" IsVisible="False" />
+
+</Shell>

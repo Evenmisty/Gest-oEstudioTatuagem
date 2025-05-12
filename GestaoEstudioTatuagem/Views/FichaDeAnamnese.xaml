@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="GestaoEstudioTatuagem.Views.FichaDeAnamnese"
+    Title="Ficha de Anamnese"
+    BackgroundColor="#1e1e1e">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label
+        Text="Ficha de Anamnese"
+        FontSize="28"
+        TextColor="White"
+        HorizontalOptions="Center" />
+
+            <!-- Switch + Label para “Preenchida?” -->
+            <HorizontalStackLayout VerticalOptions="Center">
+                <Switch IsToggled="{Binding Preenchida}" />
+                <Label
+          Text="Preenchida?"
+          TextColor="White"
+          VerticalTextAlignment="Center"
+          Margin="8,0,0,0" />
+            </HorizontalStackLayout>
+
+            <!-- Editor para Observações -->
+            <Editor
+        Placeholder="Observações"
+        Text="{Binding Observacoes}"
+        AutoSize="TextChanges"
+        BackgroundColor="White"
+        TextColor="Black"
+        HeightRequest="120" />
+
+            <!-- Botão Salvar -->
+            <Button
+        Text="Salvar"
+        Command="{Binding SalvarCommand}"
+        BackgroundColor="#ff4081"
+        TextColor="White"
+        CornerRadius="10"
+        FontAttributes="Bold"
+        HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

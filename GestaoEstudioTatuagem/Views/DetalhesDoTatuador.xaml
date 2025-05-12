@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestaoEstudioTatuagem.Views.DetalhesDoTatuador"
+             xmlns:vm="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+             x:DataType="vm:DetalhesDoTatuadorViewModel"
+             BackgroundColor="#121212"
+             Padding="20">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20">
+            <Label Text="Detalhes do Tatuador"
+                   FontSize="24"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+
+            <Frame BackgroundColor="#1E1E1E" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Nome" TextColor="White" />
+                    <Label Text="{Binding Tatuador.Nome}" TextColor="White" FontAttributes="Bold" />
+
+                    <Label Text="Especialidade" TextColor="White" />
+                    <Label Text="{Binding Tatuador.Especialidade}" TextColor="White" FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Voltar" 
+                    BackgroundColor="#007AFF" 
+                    TextColor="White" 
+                    Clicked="OnVoltarClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

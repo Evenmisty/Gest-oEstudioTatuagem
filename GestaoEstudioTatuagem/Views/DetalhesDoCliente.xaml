@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestaoEstudioTatuagem.Views.DetalhesDoCliente"
+             Title="Detalhes do Cliente"
+             BackgroundColor="#f5f5f5">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Detalhes do Cliente"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Botões de navegação entre seções -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="Informações"
+                        Command="{Binding ShowPersonalInfoCommand}"
+                        BackgroundColor="#6200ee"
+                        TextColor="White"
+                        CornerRadius="12" />
+                <Button Text="Histórico"
+                        Command="{Binding ShowTattooHistoryCommand}"
+                        BackgroundColor="#6200ee"
+                        TextColor="White"
+                        CornerRadius="12" />
+                <Button Text="Anamnese"
+                        Command="{Binding ShowAnamnesisCommand}"
+                        BackgroundColor="#6200ee"
+                        TextColor="White"
+                        CornerRadius="12" />
+                <Button Text="Prontuário"
+                        Command="{Binding ShowRecordsCommand}"
+                        BackgroundColor="#6200ee"
+                        TextColor="White"
+                        CornerRadius="12" />
+            </HorizontalStackLayout>
+
+            <!-- Seção de Informações Pessoais -->
+            <StackLayout IsVisible="{Binding IsPersonalInfoVisible}" Spacing="10">
+                <Label Text="Nome:" FontAttributes="Bold" />
+                <Label Text="{Binding Cliente.Nome}" />
+
+                <Label Text="Email:" FontAttributes="Bold" />
+                <Label Text="{Binding Cliente.Email}" />
+
+                <Label Text="Telefone:" FontAttributes="Bold" />
+                <Label Text="{Binding Cliente.Telefone}" />
+
+                <Label Text="Endereço:" FontAttributes="Bold" />
+                <Label Text="{Binding Cliente.Endereco}" />
+
+                <Button Text="Editar Cliente"
+                        Command="{Binding EditClientCommand}"
+                        BackgroundColor="#03dac5"
+                        TextColor="Black"
+                        CornerRadius="12" />
+            </StackLayout>
+
+            <!-- Histórico de Sessões -->
+            <StackLayout IsVisible="{Binding IsTattooHistoryVisible}" Spacing="10">
+                <Label Text="Histórico de Tatuagens" FontAttributes="Bold" FontSize="20" />
+                <CollectionView ItemsSource="{Binding TattooHistory}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="0,5" BackgroundColor="White" CornerRadius="10">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding DescricaoTatuagem}" FontAttributes="Bold" />
+                                    <Label Text="{Binding DataSessao, StringFormat='Data: {0:dd/MM/yyyy}'}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button Text="Agendar Nova Sessão"
+                        Command="{Binding ScheduleSessionCommand}"
+                        BackgroundColor="#03dac5"
+                        TextColor="Black"
+                        CornerRadius="12" />
+            </StackLayout>
+
+            <!-- Ficha de Anamnese -->
+            <StackLayout IsVisible="{Binding IsAnamnesisVisible}" Spacing="10">
+                <Label Text="Ficha de Anamnese" FontAttributes="Bold" FontSize="20" />
+                <Label Text="Preenchida?:" FontAttributes="Bold" />
+                <Label Text="{Binding Cliente.FichaAnamnese.Preenchida, StringFormat='{0}'}" />
+                <Label Text="Observações:" FontAttributes="Bold" />
+                <Label Text="{Binding Cliente.FichaAnamnese.Observacoes}" />
+                <Button Text="Visualizar Ficha"
+                        Command="{Binding ViewAnamnesisCommand}"
+                        BackgroundColor="#03dac5"
+                        TextColor="Black"
+                        CornerRadius="12" />
+            </StackLayout>
+
+            <!-- Prontuários -->
+            <StackLayout IsVisible="{Binding IsRecordsVisible}" Spacing="10">
+                <Label Text="Prontuários Eletrônicos" FontAttributes="Bold" FontSize="20" />
+                <CollectionView ItemsSource="{Binding MedicalRecords}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="0,5" BackgroundColor="White" CornerRadius="10">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding DetalhesProcedimento}" FontAttributes="Bold" />
+                                    <Label Text="{Binding DataRegistro, StringFormat='Data: {0:dd/MM/yyyy}'}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

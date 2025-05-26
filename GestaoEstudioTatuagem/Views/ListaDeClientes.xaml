@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+             x:Class="GestaoEstudioTatuagem.Views.ListaDeClientes"
+             Title="Clientes">
+
+    <ContentPage.BindingContext>
+        <viewmodels:ListaDeClientesViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Clientes"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Entry Placeholder="Buscar cliente..." 
+                       Text="{Binding SearchQuery}" 
+                       HorizontalOptions="FillAndExpand" />
+
+                <Picker Title="Filtrar por"
+                        ItemsSource="{Binding FilterOptions}" 
+                        SelectedItem="{Binding SelectedFilter}" 
+                        WidthRequest="160"/>
+            </HorizontalStackLayout>
+
+            <Button Text="Novo Cliente"
+                    Command="{Binding AddClientCommand}"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Margin="0,10" />
+
+            <CollectionView ItemsSource="{Binding Clients}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray" Padding="15" CornerRadius="10" Margin="0,5">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Nome}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="{Binding Telefone}" FontSize="14" />
+                                <Label Text="{Binding CPF}" FontSize="14" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

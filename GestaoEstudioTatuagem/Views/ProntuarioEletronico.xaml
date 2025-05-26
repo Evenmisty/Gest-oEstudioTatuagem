@@ -1,0 +1,43 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestaoEstudioTatuagem.Views.ProntuarioEletronico"
+             Title="Prontuário Eletrônico">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Nome do Cliente" FontAttributes="Bold"/>
+            <Entry Text="{Binding ClienteNome}" Placeholder="Digite o nome do cliente" />
+
+            <Label Text="Data de Nascimento" FontAttributes="Bold"/>
+            <DatePicker Date="{Binding ClienteNascimento}" />
+
+            <Label Text="Tatuador" FontAttributes="Bold"/>
+            <Entry Text="{Binding Tatuador}" Placeholder="Nome do tatuador" />
+
+            <Label Text="Data da Sessão" FontAttributes="Bold"/>
+            <DatePicker Date="{Binding DataSessao}" />
+
+            <Label Text="Detalhes do Procedimento" FontAttributes="Bold"/>
+            <Editor Text="{Binding DetalhesProcedimento}" Placeholder="Descreva o procedimento" HeightRequest="100"/>
+
+            <Label Text="Observações" FontAttributes="Bold"/>
+            <Editor Text="{Binding Observacoes}" Placeholder="Observações adicionais" HeightRequest="80"/>
+
+            <Label Text="Cuidados Posteriores" FontAttributes="Bold"/>
+            <Editor Text="{Binding CuidadosPosteriores}" Placeholder="Instruções para o cliente" HeightRequest="80"/>
+
+            <Label Text="Fotos do Procedimento" FontAttributes="Bold"/>
+            <CollectionView x:Name="FotosPreview" ItemsSource="{Binding ImagensSelecionadas}" HeightRequest="120">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding .}" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Selecionar Fotos" Clicked="SelecionarFotos_Clicked" />
+            <Button Text="Salvar Prontuário" Command="{Binding SalvarCommand}" />
+            <Button Text="Cancelar" Command="{Binding CancelarCommand}" BackgroundColor="Red" TextColor="White" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

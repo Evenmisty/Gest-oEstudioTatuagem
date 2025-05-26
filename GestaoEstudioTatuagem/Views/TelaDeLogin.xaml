@@ -1,0 +1,53 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+             x:Class="GestaoEstudioTatuagem.Views.TelaDeLogin"
+             BackgroundColor="#0f0f0f"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <viewmodels:TelaDeLoginViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+            <Image Source="logo.png" HeightRequest="100" HorizontalOptions="Center" />
+
+            <Label Text="Ink Manager" FontSize="24" HorizontalOptions="Center" TextColor="#a12330" FontAttributes="Bold" />
+
+            <Label Text="Acesse sua conta para continuar" FontSize="14" HorizontalOptions="Center" TextColor="#888" />
+
+            <!-- Email -->
+            <Label Text="Email" TextColor="#ccc" />
+            <Entry Placeholder="seu@email.com" Text="{Binding Email}" Keyboard="Email" BackgroundColor="#1a1a1a" TextColor="White" PlaceholderColor="#555" HorizontalOptions="FillAndExpand" />
+
+            <!-- Senha -->
+            <Label Text="Senha" TextColor="#ccc" />
+            <StackLayout Orientation="Horizontal">
+                <Entry Placeholder="••••••••" Text="{Binding Password}" IsPassword="{Binding IsPasswordHidden}" BackgroundColor="#1a1a1a" TextColor="White" PlaceholderColor="#555" HorizontalOptions="FillAndExpand" />
+                <ImageButton Source="eye_icon.png" Command="{Binding TogglePasswordCommand}" BackgroundColor="Transparent" WidthRequest="30" HeightRequest="30" />
+            </StackLayout>
+
+            <!-- Botão Login -->
+            <Button Text="Entrar" Command="{Binding SubmitCommand}" BackgroundColor="#800020" TextColor="White" CornerRadius="10" HeightRequest="50" />
+
+            <!-- Esqueci minha senha -->
+            <Label Text="Esqueci minha senha" TextColor="#a12330" FontAttributes="Bold" HorizontalOptions="End">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <!-- Navegação para cadastro -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                <Label Text="Não tem uma conta?" TextColor="#aaa" />
+                <Label Text="Cadastre-se" TextColor="#a12330" FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToCadastroCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

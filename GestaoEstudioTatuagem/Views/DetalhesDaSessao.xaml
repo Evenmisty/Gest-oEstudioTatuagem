@@ -1,0 +1,48 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+             x:Class="GestaoEstudioTatuagem.Views.DetalhesDaSessao"
+             x:DataType="viewmodels:DetalhesDaSessaoViewModel"
+             Title="Detalhes da Sessão">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Detalhes da Sessão" FontSize="24" HorizontalOptions="Center" />
+
+            <Frame>
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Data da Sessão:" FontAttributes="Bold" />
+                    <Label Text="{Binding SessaoAtual.DataSessao, StringFormat='{0:dd/MM/yyyy}'}" />
+
+                    <Label Text="Descrição da Tatuagem:" FontAttributes="Bold" />
+                    <Label Text="{Binding SessaoAtual.DescricaoTatuagem}" />
+
+                    <Label Text="Tatuador:" FontAttributes="Bold" />
+                    <Label Text="{Binding SessaoAtual.Tatuador.Nome}" />
+
+                    <Label Text="Especialidade do Tatuador:" FontAttributes="Bold" />
+                    <Label Text="{Binding SessaoAtual.Tatuador.Especialidade}" />
+
+                    <Label Text="Cliente:" FontAttributes="Bold" />
+                    <Label Text="{Binding SessaoAtual.Cliente.Nome}" />
+
+                    <Label Text="CPF do Cliente:" FontAttributes="Bold" />
+                    <Label Text="{Binding SessaoAtual.Cliente.CPF}" />
+
+                    <Label Text="Email do Cliente:" FontAttributes="Bold" />
+                    <Label Text="{Binding SessaoAtual.Cliente.Email}" />
+
+                    <Label Text="Telefone do Cliente:" FontAttributes="Bold" />
+                    <Label Text="{Binding SessaoAtual.Cliente.Telefone}" />
+
+                    <Label Text="Endereço do Cliente:" FontAttributes="Bold" />
+                    <Label Text="{Binding SessaoAtual.Cliente.Endereco}" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:GestaoEstudioTatuagem.Models"
+    xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+    x:Class="GestaoEstudioTatuagem.Views.TatuadorPage"
+    Title="Gestão de Tatuadores"
+    BackgroundColor="#1e1e1e">
+
+    <ContentPage.BindingContext>
+        <viewmodels:TatuadorViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20">
+        <Label 
+            Text="Gestão de Tatuadores" 
+            FontSize="24" 
+            TextColor="White"
+            HorizontalOptions="Center"/>
+
+        <!-- Lista de Tatuadores -->
+        <CollectionView ItemsSource="{Binding ListaTatuadores}" Margin="0,10,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Tatuadores">
+                    <Frame BorderColor="Gray" Padding="10" CornerRadius="10" BackgroundColor="#2e2e2e">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Nome}" FontSize="18" TextColor="White"/>
+                            <Label Text="{Binding Especialidade}" FontSize="14" TextColor="#aaaaaa"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Formulário de Novo Tatuador -->
+        <VerticalStackLayout Spacing="10" Margin="0,20,0,0">
+            <Entry Placeholder="Nome do Tatuador" Text="{Binding Nome}" PlaceholderColor="#aaaaaa" TextColor="White" BackgroundColor="#2e2e2e"/>
+            <Entry Placeholder="Especialidade" Text="{Binding Especialidade}" PlaceholderColor="#aaaaaa" TextColor="White" BackgroundColor="#2e2e2e"/>
+            <Button 
+                Text="Adicionar Tatuador" 
+                Command="{Binding AdicionarTatuadorCommand}"
+                BackgroundColor="#ff4081" 
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="10"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,31 @@
+<Shell
+    x:Class="GestaoEstudioTatuagem.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:GestaoEstudioTatuagem.Views"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Gestão Estúdio Tatuagem">
+
+    <FlyoutItem Title="Login">
+        <ShellContent Title="Login" ContentTemplate="{DataTemplate views:TelaDeLogin}" Route="TelaDeLogin" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Dashboard">
+        <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate views:Dashboard}" Route="Dashboard" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Agenda">
+        <ShellContent Title="Agenda" ContentTemplate="{DataTemplate views:Agenda}" Route="Agenda" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Clientes">
+        <ShellContent Title="Lista de Clientes" ContentTemplate="{DataTemplate views:ListaDeClientes}" Route="ListaDeClientes" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Tatuadores">
+        <ShellContent Title="Lista de Tatuadores" ContentTemplate="{DataTemplate views:TatuadorPage}" Route="TatuadorPage" />
+    </FlyoutItem>
+
+    <!-- ✅ Rota para a Tela de Cadastro -->
+    <ShellContent Title="Cadastro" ContentTemplate="{DataTemplate views:TelaDeCadastro}" Route="TelaDeCadastro" />
+</Shell>

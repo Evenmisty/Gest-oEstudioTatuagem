@@ -1,0 +1,31 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+             x:Class="GestaoEstudioTatuagem.Views.TelaDeCadastro"
+             Title="Cadastro"
+             BackgroundColor="#0f0f0f">
+
+    <ContentPage.BindingContext>
+        <viewmodels:TelaDeCadastroViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+            <Label Text="Cadastre-se" FontSize="24" HorizontalOptions="Center" TextColor="#a12330" FontAttributes="Bold" />
+
+            <Label Text="Nome Completo" TextColor="#ccc" />
+            <Entry Placeholder="Seu nome completo" Text="{Binding FullName}" />
+
+            <Label Text="Email" TextColor="#ccc" />
+            <Entry Placeholder="seu@email.com" Text="{Binding Email}" Keyboard="Email" />
+
+            <Label Text="Senha" TextColor="#ccc" />
+            <Entry Placeholder="••••••••" Text="{Binding Password}" IsPassword="True" />
+
+            <Label Text="Confirmar Senha" TextColor="#ccc" />
+            <Entry Placeholder="••••••••" Text="{Binding ConfirmPassword}" IsPassword="True" />
+
+            <Button Text="Cadastrar" Command="{Binding RegisterCommand}" BackgroundColor="#800020" TextColor="White" CornerRadius="10" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,3 +1,4 @@
+using GestaoEstudioTatuagem.ViewModels;
 using Microsoft.Maui.Controls;
 using System;
 using System.Collections.ObjectModel;
@@ -7,14 +8,14 @@ using Microsoft.Maui.Storage;
 
 namespace GestaoEstudioTatuagem.Views
 {
-    public partial class ProntuarioEletronico : ContentPage
+    public partial class FichaDeAnamnese : ContentPage
     {
         public ObservableCollection<ImageSource> ImagensSelecionadas { get; set; } = new();
 
-        public ProntuarioEletronico()
+        public FichaDeAnamnese()
         {
             InitializeComponent();
-            BindingContext = this;
+            BindingContext = new ProntuarioEletronicoViewModel(); // Usando o ViewModel para manter o padrão MVVM
             FotosPreview.ItemsSource = ImagensSelecionadas;
         }
 
@@ -30,6 +31,7 @@ namespace GestaoEstudioTatuagem.Views
 
                 if (resultados != null)
                 {
+                    ImagensSelecionadas.Clear();
                     foreach (var arquivo in resultados)
                     {
                         using var stream = await arquivo.OpenReadAsync();
@@ -46,15 +48,18 @@ namespace GestaoEstudioTatuagem.Views
 
         private async void Salvar_Clicked(object sender, EventArgs e)
         {
-            // Aqui você pode integrar com banco de dados ou ViewModel
-            await DisplayAlert("Sucesso", "Prontuário salvo com sucesso!", "OK");
+            if (BindingContext is ProntuarioEletronicoViewModel viewModel)
+            {
+                await viewModel.SalvarCommand.ExecuteAsync(null); // Usando o comando do ViewModel
+            }
         }
 
         private async void Cancelar_Clicked(object sender, EventArgs e)
         {
-            var confirmacao = await DisplayAlert("Cancelar", "Deseja cancelar o preenchimento do prontuário?", "Sim", "Não");
-            if (confirmacao)
-                await Navigation.PopAsync();
+            if (BindingContext is ProntuarioEletronicoViewModel viewModel)
+            {
+                await viewModel.CancelarCommand.ExecuteAsync(null); // Usando o comando do ViewModel
+            }
         }
     }
 }

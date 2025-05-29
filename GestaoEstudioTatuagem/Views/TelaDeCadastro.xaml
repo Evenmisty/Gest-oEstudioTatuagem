@@ -1,0 +1,74 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+             x:Class="GestaoEstudioTatuagem.Views.TelaDeCadastro"
+             Title="Cadastro">
+
+
+    <ContentPage.BindingContext>
+        <viewmodels:TelaDeCadastroViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+
+        <!-- IMAGEM DE FUNDO -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"
+               IsVisible="True"/>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="30" Spacing="20">
+
+                <!-- CARD -->
+                <Frame BackgroundColor="#e3dcce"
+                       CornerRadius="20"
+                       HasShadow="True"
+                       Padding="20"
+                       BorderColor="Transparent">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Image Source="logo.png" HeightRequest="180" HorizontalOptions="Center" />
+
+                        <Label Text="Criar uma nova conta"
+                               FontSize="30"
+                               HorizontalOptions="Center"
+                               TextColor="#49423c"
+                               FontAttributes="Bold"
+                               FontFamily="Questrial"/>
+
+                        <Label Text="Nome Completo" TextColor="#49423c" FontFamily="DMSansLight"/>
+                        <Entry Placeholder="Seu nome completo" 
+                               Text="{Binding FullName}" 
+                               BackgroundColor="#49423c"/>
+
+                        <Label Text="Email" TextColor="#49423c" FontFamily="DMSansLight"/>
+                        <Entry Placeholder="seu@email.com"
+                               Text="{Binding Email}"
+                               BackgroundColor="#49423c"
+                               Keyboard="Email"/>
+
+                        <Label Text="Senha" TextColor="#49423c" FontFamily="DMSansLight"/>
+                        <Entry Placeholder="••••••••" Text="{Binding Password}" 
+                               BackgroundColor="#49423c" 
+                               IsPassword="{Binding IsPasswordHidden}"/>
+
+                        <Label Text="Confirmar Senha" TextColor="#49423c" FontFamily="DMSansLight"/>
+                        <Entry Placeholder="••••••••" Text="{Binding ConfirmPassword}" 
+                               BackgroundColor="#49423c" 
+                               IsPassword="True"/>
+
+                        <Button Text="Cadastrar"
+                                Command="{Binding RegisterCommand}"
+                                BackgroundColor="#800020"
+                                TextColor="White"
+                                CornerRadius="10"/>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -10,39 +10,100 @@
         <VerticalStackLayout Padding="20" Spacing="15">
 
             <Label
-        Text="Ficha de Anamnese"
-        FontSize="28"
-        TextColor="White"
-        HorizontalOptions="Center" />
+                Text="Ficha de Anamnese"
+                FontSize="28"
+                TextColor="White"
+                HorizontalOptions="Center" 
+                FontAttributes="Bold"/>
 
             <!-- Switch + Label para “Preenchida?” -->
             <HorizontalStackLayout VerticalOptions="Center">
-                <Switch IsToggled="{Binding Preenchida}" />
+                <Switch 
+                    IsToggled="{Binding Preenchida}" 
+                    ThumbColor="#ff4081" 
+                    OnColor="#2ecc71" />
                 <Label
-          Text="Preenchida?"
-          TextColor="White"
-          VerticalTextAlignment="Center"
-          Margin="8,0,0,0" />
+                    Text="Preenchida?"
+                    TextColor="White"
+                    VerticalTextAlignment="Center"
+                    Margin="8,0,0,0" />
             </HorizontalStackLayout>
 
             <!-- Editor para Observações -->
-            <Editor
-        Placeholder="Observações"
-        Text="{Binding Observacoes}"
-        AutoSize="TextChanges"
-        BackgroundColor="White"
-        TextColor="Black"
-        HeightRequest="120" />
+            <Label 
+                Text="Observações"
+                TextColor="White"
+                FontAttributes="Bold" />
+            <Frame BackgroundColor="#2a2a2a" CornerRadius="10" Padding="5">
+                <Editor
+                    Placeholder="Digite suas observações aqui..."
+                    Text="{Binding Observacoes}"
+                    AutoSize="TextChanges"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    PlaceholderColor="#808080"
+                    HeightRequest="120" />
+            </Frame>
 
-            <!-- Botão Salvar -->
+            <!-- Editor para Cuidados Posteriores -->
+            <Label 
+                Text="Cuidados Posteriores"
+                TextColor="White"
+                FontAttributes="Bold" />
+            <Frame BackgroundColor="#2a2a2a" CornerRadius="10" Padding="5">
+                <Editor
+                    Placeholder="Instruções para o cliente"
+                    Text="{Binding CuidadosPosteriores}"
+                    AutoSize="TextChanges"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    PlaceholderColor="#808080"
+                    HeightRequest="120" />
+            </Frame>
+
+            <!-- Botão Selecionar Fotos -->
             <Button
-        Text="Salvar"
-        Command="{Binding SalvarCommand}"
-        BackgroundColor="#ff4081"
-        TextColor="White"
-        CornerRadius="10"
-        FontAttributes="Bold"
-        HeightRequest="50" />
+                Text="Selecionar Fotos"
+                BackgroundColor="#3b3b3b"
+                TextColor="White"
+                Clicked="SelecionarFotos_Clicked"
+                CornerRadius="10"
+                FontAttributes="Bold" 
+                HeightRequest="50"/>
+
+            <!-- Visualização de Fotos Selecionadas -->
+            <CollectionView x:Name="FotosPreview" ItemsSource="{Binding ImagensSelecionadas}" HeightRequest="120">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="2" BackgroundColor="#444" CornerRadius="8">
+                            <Image Source="{Binding .}" WidthRequest="100" HeightRequest="100" Aspect="AspectFill" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Botão Salvar e Cancelar -->
+            <HorizontalStackLayout Spacing="10">
+                <Button
+                    Text="Salvar"
+                    Command="{Binding SalvarCommand}"
+                    BackgroundColor="#ff4081"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand" />
+
+                <Button
+                    Text="Cancelar"
+                    Command="{Binding CancelarCommand}"
+                    BackgroundColor="#555555"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand" />
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

@@ -5,45 +5,87 @@
     xmlns:model="clr-namespace:GestaoEstudioTatuagem.Models"
     xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
     x:Class="GestaoEstudioTatuagem.Views.TatuadorPage"
-    Title="Gestão de Tatuadores"
-    BackgroundColor="#1e1e1e">
+    Title="Gestão de Tatuadores">
 
     <ContentPage.BindingContext>
         <viewmodels:TatuadorViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout Padding="20">
-        <Label 
-            Text="Gestão de Tatuadores" 
-            FontSize="24" 
-            TextColor="White"
-            HorizontalOptions="Center"/>
+    <Grid>
+        <!-- IMAGEM DE FUNDO -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"
+               IsVisible="True" />
 
-        <!-- Lista de Tatuadores -->
-        <CollectionView ItemsSource="{Binding ListaTatuadores}" Margin="0,10,0,0">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Tatuadores">
-                    <Frame BorderColor="Gray" Padding="10" CornerRadius="10" BackgroundColor="#2e2e2e">
-                        <VerticalStackLayout>
-                            <Label Text="{Binding Nome}" FontSize="18" TextColor="White"/>
-                            <Label Text="{Binding Especialidade}" FontSize="14" TextColor="#aaaaaa"/>
-                        </VerticalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <VerticalStackLayout Padding="20">
+            <!-- CARD COM FRAME -->
+            <Frame BackgroundColor="#e3dcce"
+                   CornerRadius="20"
+                   Padding="20"
+                   HasShadow="True"
+                   BorderColor="Transparent">
 
-        <!-- Formulário de Novo Tatuador -->
-        <VerticalStackLayout Spacing="10" Margin="0,20,0,0">
-            <Entry Placeholder="Nome do Tatuador" Text="{Binding Nome}" PlaceholderColor="#aaaaaa" TextColor="White" BackgroundColor="#2e2e2e"/>
-            <Entry Placeholder="Especialidade" Text="{Binding Especialidade}" PlaceholderColor="#aaaaaa" TextColor="White" BackgroundColor="#2e2e2e"/>
-            <Button 
-                Text="Adicionar Tatuador" 
-                Command="{Binding AdicionarTatuadorCommand}"
-                BackgroundColor="#ff4081" 
-                TextColor="White"
-                FontAttributes="Bold"
-                CornerRadius="10"/>
+                <!-- Conteúdo único dentro do Frame -->
+                <VerticalStackLayout>
+                    <Label 
+                        Text="TATUADORES" 
+                        FontSize="30" 
+                        TextColor="#49423c"
+                        HorizontalOptions="Center"
+                        FontFamily="Questrial"/>
+
+                    <!-- Lista de Tatuadores -->
+                    <CollectionView ItemsSource="{Binding ListaTatuadores}" Margin="0,10,0,0">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Tatuadores">
+                                <Frame BorderColor="#9f8f7f" Padding="10" CornerRadius="10" BackgroundColor="#77453f">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Nome}" FontSize="20" 
+                                               TextColor="#e3dcce" 
+                                               FontFamily="DMSansLight"
+                                               FontAttributes="Bold"/>
+                                        <Label Text="{Binding Especialidade}" FontSize="16" 
+                                               TextColor="#9f8f7f"
+                                               FontFamily="OpenSansRegular"
+                                               FontAttributes="Bold, Italic"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <!-- Formulário de Novo Tatuador -->
+                    <VerticalStackLayout Spacing="10" Margin="0,20,0,0">
+                        <Label
+                            Text="Adicionar novo tatuador"
+                            FontSize="30"
+                            TextColor="#49423c"
+                            HorizontalOptions="Center"
+                            FontFamily="Questrial"/>
+                        <Entry Placeholder="Nome do Tatuador" Text="{Binding Nome}"
+                               PlaceholderColor="#e3dcce" 
+                               TextColor="White"
+                               FontFamily="PoppinsRegular"
+                               BackgroundColor="#49423c"/>
+                        
+                        <Entry Placeholder="Especialidade" Text="{Binding Especialidade}"
+                               PlaceholderColor="#e3dcce" 
+                               TextColor="White" 
+                               FontFamily="PoppinsRegular"
+                               BackgroundColor="#49423c"/>
+                        <Button 
+                            Text="Adicionar Tatuador" 
+                            Command="{Binding AdicionarTatuadorCommand}"
+                            BackgroundColor="#4a755e" 
+                            TextColor="#e3dcce"
+                            FontSize="16"
+                            FontFamily="PoppinsExtraBold"
+                            FontAttributes="Bold"
+                            CornerRadius="10"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
         </VerticalStackLayout>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

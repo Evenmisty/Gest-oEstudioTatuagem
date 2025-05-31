@@ -9,47 +9,85 @@
         <viewmodels:ListaDeClientesViewModel />
     </ContentPage.BindingContext>
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+    <Grid>
+        <!-- IMAGEM DE FUNDO -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"
+               IsVisible="True" />
 
-            <Label Text="Clientes"
-                   FontSize="32"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+        <VerticalStackLayout Padding="20">
 
-            <HorizontalStackLayout Spacing="10">
-                <Entry Placeholder="Buscar cliente..." 
-                       Text="{Binding SearchQuery}" 
-                       HorizontalOptions="FillAndExpand" />
+            <Frame BackgroundColor="#e3dcce"
+                   CornerRadius="20"
+                   Padding="20"
+                   HasShadow="True"
+                   BorderColor="Transparent">
 
-                <Picker Title="Filtrar por"
-                        ItemsSource="{Binding FilterOptions}" 
-                        SelectedItem="{Binding SelectedFilter}" 
-                        WidthRequest="160"/>
-            </HorizontalStackLayout>
+                <VerticalStackLayout Spacing="15">
 
-            <Button Text="Novo Cliente"
-                    Command="{Binding AddClientCommand}"
-                    BackgroundColor="#4CAF50"
-                    TextColor="White"
-                    CornerRadius="10"
-                    HeightRequest="50"
-                    Margin="0,10" />
+                    <!-- TÍTULO -->
+                    <Label Text="CLIENTES"
+                           FontSize="32"
+                           HorizontalOptions="Center"
+                           FontFamily="Questrial"
+                           TextColor="#49423c"/>
 
-            <CollectionView ItemsSource="{Binding Clients}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BorderColor="Gray" Padding="15" CornerRadius="10" Margin="0,5">
-                            <VerticalStackLayout>
-                                <Label Text="{Binding Nome}" FontSize="18" FontAttributes="Bold" />
-                                <Label Text="{Binding Telefone}" FontSize="14" />
-                                <Label Text="{Binding CPF}" FontSize="14" />
-                            </VerticalStackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                    <!-- BUSCA E FILTRO -->
+                    <HorizontalStackLayout Spacing="10">
+                        <Entry Placeholder="Buscar cliente..." 
+                               Text="{Binding SearchQuery}" 
+                               HorizontalOptions="FillAndExpand"
+                               PlaceholderColor="#9f8f7f"
+                               TextColor="#49423c"
+                               FontFamily="PoppinsRegular"/>
 
+                        <Picker Title="Filtrar por"
+                                ItemsSource="{Binding FilterOptions}" 
+                                SelectedItem="{Binding SelectedFilter}" 
+                                WidthRequest="160"/>
+                    </HorizontalStackLayout>
+
+                    <!-- BOTÃO ADICIONAR -->
+                    <Button Text="Novo Cliente"
+                            Command="{Binding AddClientCommand}"
+                            BackgroundColor="#4a755e"
+                            TextColor="#e3dcce"
+                            CornerRadius="10"
+                            FontFamily="PoppinsExtraBold"
+                            FontAttributes="Bold"
+                            HeightRequest="50"
+                            Margin="0,10"/>
+
+                    <!-- LISTA DE CLIENTES -->
+                    <CollectionView ItemsSource="{Binding Clients}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="#9f8f7f"
+                                       BackgroundColor="#77453f"
+                                       Padding="15"
+                                       CornerRadius="10"
+                                       Margin="0,5">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Nome}" 
+                                               FontSize="18" 
+                                               FontAttributes="Bold"
+                                               TextColor="#e3dcce"
+                                               FontFamily="DMSansLight"/>
+                                        <Label Text="{Binding Telefone}" 
+                                               FontSize="14"
+                                               TextColor="#9f8f7f"/>
+                                        <Label Text="{Binding CPF}" 
+                                               FontSize="14"
+                                               TextColor="#9f8f7f"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </VerticalStackLayout>
+            </Frame>
         </VerticalStackLayout>
-    </ScrollView>
+    </Grid>
 </ContentPage>

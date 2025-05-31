@@ -1,94 +1,155 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GestaoEstudioTatuagem.Views.Dashboard"
-             BackgroundColor="#f4f4f4"
-             Title="Dashboard">
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="GestaoEstudioTatuagem.Views.Dashboard"
+    Title="Dashboard">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="30">
+    <Grid>
+        <!-- Imagem de Fundo -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"/>
 
-            <Grid ColumnDefinitions="*,*,*" RowSpacing="10" ColumnSpacing="10">
-                <Frame BackgroundColor="#f9f9f9" CornerRadius="10" Padding="15" Grid.Column="0">
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+                <!-- Cards Superiores -->
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                    <Frame BackgroundColor="#e3dcce" CornerRadius="20" Padding="15" HasShadow="True" Grid.Column="0">
+                        <VerticalStackLayout>
+                            <Label Text="Agendamentos do Dia"
+                                   FontSize="14"
+                                   TextColor="#49423c"
+                                   FontFamily="Questrial"/>
+                            <Label Text="{Binding AgendamentosDoDia}"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#49423c"
+                                   FontFamily="PoppinsExtraBold"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="#e3dcce" CornerRadius="20" Padding="15" HasShadow="True" Grid.Column="1">
+                        <VerticalStackLayout>
+                            <Label Text="Novos Clientes no Mês"
+                                   FontSize="14"
+                                   TextColor="#49423c"
+                                   FontFamily="Questrial"/>
+                            <Label Text="{Binding NovosClientesMes}"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#49423c"
+                                   FontFamily="PoppinsExtraBold"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="#e3dcce" CornerRadius="20" Padding="15" HasShadow="True" Grid.Column="2">
+                        <VerticalStackLayout>
+                            <Label Text="Faturamento Estimado"
+                                   FontSize="14"
+                                   TextColor="#49423c"
+                                   FontFamily="Questrial"/>
+                            <Label Text="{Binding FaturamentoEstimado, StringFormat='R$ {0:N2}'}"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#49423c"
+                                   FontFamily="PoppinsExtraBold"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- Próximos Agendamentos -->
+                <Frame BackgroundColor="#e3dcce" CornerRadius="20" Padding="15" HasShadow="True">
                     <VerticalStackLayout>
-                        <Label Text="Agendamentos do Dia" FontSize="16" TextColor="#555" />
-                        <Label Text="{Binding AgendamentosDoDia}" FontSize="24" FontAttributes="Bold" TextColor="#333" />
+                        <Label Text="Próximos Agendamentos"
+                               FontSize="22"
+                               TextColor="#49423c"
+                               FontFamily="Questrial"/>
+                        <CollectionView ItemsSource="{Binding ProximosAgendamentos}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame BackgroundColor="#77453f"
+                                           CornerRadius="15"
+                                           Padding="10"
+                                           Margin="0,5">
+                                        <Label Text="{Binding Descricao}"
+                                               TextColor="#e3dcce"
+                                               FontFamily="DMSansLight"
+                                               FontSize="16"/>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Button Text="Ver Agenda Completa"
+                                TextColor="#77453f"
+                                BackgroundColor="Transparent"
+                                FontFamily="PoppinsExtraBold"
+                                Command="{Binding VerAgendaCompletaCommand}"/>
                     </VerticalStackLayout>
                 </Frame>
-                <Frame BackgroundColor="#f9f9f9" CornerRadius="10" Padding="15" Grid.Column="1">
+
+                <!-- Alertas -->
+                <Frame BackgroundColor="#e3dcce" CornerRadius="20" Padding="15" HasShadow="True">
                     <VerticalStackLayout>
-                        <Label Text="Novos Clientes no Mês" FontSize="16" TextColor="#555" />
-                        <Label Text="{Binding NovosClientesMes}" FontSize="24" FontAttributes="Bold" TextColor="#333" />
+                        <Label Text="Alertas e Notificações"
+                               FontSize="22"
+                               TextColor="#49423c"
+                               FontFamily="Questrial"/>
+                        <CollectionView ItemsSource="{Binding Alertas}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame BackgroundColor="#ffefef"
+                                           CornerRadius="10"
+                                           Padding="10"
+                                           Margin="0,5">
+                                        <Label Text="{Binding}"
+                                               TextColor="#77453f"
+                                               FontAttributes="Bold"
+                                               FontFamily="PoppinsExtraBold"/>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </VerticalStackLayout>
                 </Frame>
-                <Frame BackgroundColor="#f9f9f9" CornerRadius="10" Padding="15" Grid.Column="2">
-                    <VerticalStackLayout>
-                        <Label Text="Faturamento Estimado" FontSize="16" TextColor="#555" />
-                        <Label Text="{Binding FaturamentoEstimado, StringFormat='R$ {0:N2}'}" FontSize="24" FontAttributes="Bold" TextColor="#333" />
+
+                <!-- Acesso Rápido -->
+                <Frame BackgroundColor="#e3dcce" CornerRadius="20" Padding="15" HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Acesso Rápido"
+                               FontSize="22"
+                               TextColor="#49423c"
+                               FontFamily="Questrial"/>
+                        <Button Text="Agendar Sessão"
+                                BackgroundColor="#4a755e"
+                                TextColor="#e3dcce"
+                                CornerRadius="10"
+                                FontFamily="PoppinsExtraBold"/>
+                        <Button Text="Novo Cliente"
+                                BackgroundColor="#4a755e"
+                                TextColor="#e3dcce"
+                                CornerRadius="10"
+                                FontFamily="PoppinsExtraBold"/>
+                        <Button Text="Consultar Agenda"
+                                BackgroundColor="#4a755e"
+                                TextColor="#e3dcce"
+                                CornerRadius="10"
+                                FontFamily="PoppinsExtraBold"/>
                     </VerticalStackLayout>
                 </Frame>
-            </Grid>
 
-            <VerticalStackLayout>
-                <Label Text="Próximos Agendamentos" FontSize="20" TextColor="#333" />
-                <CollectionView ItemsSource="{Binding ProximosAgendamentos}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BackgroundColor="#f9f9f9" CornerRadius="10" Padding="10" Margin="0,5">
-                                <Label Text="{Binding Descricao}" TextColor="#333" />
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-
-                <Button Text="Ver Agenda Completa"
-                        TextColor="#e74c3c"
-                        BackgroundColor="Transparent"
-                        Command="{Binding VerAgendaCompletaCommand}" />
-            </VerticalStackLayout>
-
-            <VerticalStackLayout>
-                <Label Text="Alertas e Notificações" FontSize="20" TextColor="#333" />
-                <CollectionView ItemsSource="{Binding Alertas}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BackgroundColor="#ffefef" CornerRadius="8" Padding="10" Margin="0,5">
-                                <Label Text="{Binding}" TextColor="#e74c3c" FontAttributes="Bold" />
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Acesso Rápido" FontSize="20" TextColor="#333" />
-                <Button Text="Agendar Sessão"
-                        BackgroundColor="#e74c3c"
-                        TextColor="White"
-                        CornerRadius="6" />
-                <Button Text="Novo Cliente"
-                        BackgroundColor="#e74c3c"
-                        TextColor="White"
-                        CornerRadius="6" />
-                <Button Text="Consultar Agenda"
-                        BackgroundColor="#e74c3c"
-                        TextColor="White"
-                        CornerRadius="6" />
-            </VerticalStackLayout>
-
-            <VerticalStackLayout>
-                <Label Text="Gráfico de Desempenho" FontSize="20" TextColor="#333" />
-                <Frame BackgroundColor="#dddddd"
+                <!-- Gráfico -->
+                <Frame BackgroundColor="#e3dcce"
                        HeightRequest="200"
-                       CornerRadius="10"
-                       VerticalOptions="FillAndExpand">
+                       CornerRadius="20"
+                       HasShadow="True">
                     <Label Text="Gráfico de Faturamento - Últimos Meses"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
-                           TextColor="#666" />
+                           TextColor="#49423c"
+                           FontFamily="PoppinsRegular"/>
                 </Frame>
             </VerticalStackLayout>
-
-        </VerticalStackLayout>
-    </ScrollView>
+        </ScrollView>
+    </Grid>
 </ContentPage>

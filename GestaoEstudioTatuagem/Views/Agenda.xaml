@@ -1,36 +1,85 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GestaoEstudioTatuagem.Views.Agenda"
              xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+             x:Class="GestaoEstudioTatuagem.Views.Agenda"
              Title="Agenda">
 
     <ContentPage.BindingContext>
         <viewmodels:AgendaViewModel />
     </ContentPage.BindingContext>
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+    <Grid>
+        <!-- Imagem de fundo -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"
+               IsVisible="True" />
 
-            <Label Text="Lista de Agendamentos"
-                   FontSize="Title"
-                   HorizontalOptions="Center" />
+        <VerticalStackLayout Padding="20">
 
-            <CollectionView ItemsSource="{Binding Sessoes}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BorderColor="LightGray" Padding="10" Margin="0,5">
-                            <VerticalStackLayout>
-                                <Label Text="{Binding Cliente.Nome}" FontAttributes="Bold" FontSize="16" />
-                                <Label Text="{Binding Tatuador.Nome}" FontSize="14" TextColor="Gray" />
-                                <Label Text="{Binding DataSessao, StringFormat='Agendado para: {0:dd/MM/yyyy HH:mm}'}" FontSize="12" />
-                                <Label Text="{Binding DescricaoTatuagem}" FontSize="12" TextColor="DarkGray" />
-                            </VerticalStackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <!-- Card com fundo claro-->
+            <Frame BackgroundColor="#e3dcce"
+                   CornerRadius="20"
+                   Padding="20"
+                   HasShadow="True"
+                   BorderColor="Transparent">
 
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- Título -->
+                    <Label Text="AGENDAMENTOS"
+                           FontSize="32"
+                           HorizontalOptions="Center"
+                           FontFamily="Questrial"
+                           TextColor="#49423c"/>
+
+                    <!-- Lista de agendamentos -->
+                    <CollectionView ItemsSource="{Binding Sessoes}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="#9f8f7f"
+                                       BackgroundColor="#77453f"
+                                       Padding="15"
+                                       CornerRadius="10"
+                                       Margin="0,5">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="{Binding Cliente.Nome}" 
+                                               FontSize="18" 
+                                               FontAttributes="Bold"
+                                               TextColor="#e3dcce"
+                                               FontFamily="DMSansLight"/>
+                                        <Label Text="{Binding Tatuador.Nome}" 
+                                               FontSize="14"
+                                               TextColor="#9f8f7f"
+                                               FontFamily="OpenSansRegular"/>
+                                               
+                                        <Label Text="{Binding DataSessao, StringFormat='Agendado para: {0:dd/MM/yyyy HH:mm}'}" 
+                                               FontSize="14"
+                                               TextColor="#9f8f7f"
+                                               FontFamily="OpenSansRegular"/>
+                                        
+                                        <Label Text="{Binding DescricaoTatuagem}" 
+                                               FontSize="14"
+                                               TextColor="#9f8f7f"
+                                               FontFamily="OpenSansRegular"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <!-- Botão para adicionar agendamento -->
+                    <Button Text="Adicionar Novo Agendamento"
+                            BackgroundColor="#4a755e"
+                            TextColor="#e3dcce"
+                            CornerRadius="10"
+                            FontFamily="PoppinsExtraBold"
+                            Margin="0,20,0,0"
+                            Command="{Binding AdicionarAgendamentoCommand}" />
+
+                </VerticalStackLayout>
+            </Frame>
         </VerticalStackLayout>
-    </ScrollView>
+    </Grid>
 </ContentPage>

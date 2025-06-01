@@ -1,7 +1,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
-             x:Class="GestaoEstudioTatuagem.Views.TelaDeLogin">
+             x:Class="GestaoEstudioTatuagem.Views.LoginTatuador"
+             Title="Login Tatuador">
 
     <ContentPage.BindingContext>
         <viewmodels:TelaDeLoginViewModel />
@@ -14,36 +15,44 @@
                Opacity="0.5"
                IsVisible="True" />
 
-        <!-- CONTEÚDO -->
         <ScrollView>
             <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
 
-                <!-- LOGO -->
-                <Image Source="logo.png" HeightRequest="180" HorizontalOptions="Center" />
-
-                <!-- CARD COM FRAME -->
+                <!-- CARD COM FRAME (incluindo logo e textos) -->
                 <Frame BackgroundColor="#e3dcce"
                        CornerRadius="20"
-                       Padding="20"
+                       Padding="25"
                        HasShadow="True"
                        BorderColor="Transparent">
 
                     <VerticalStackLayout Spacing="15">
 
+                        <!-- LOGO -->
+                        <Image Source="logo.png"
+                               HeightRequest="200"
+                               HorizontalOptions="Center" />
+
+                        <!-- Títulos -->
                         <Label Text="Login"
-                               FontSize="35"
+                               FontSize="40"
                                HorizontalOptions="Center"
                                TextColor="#49423c"
-                               FontFamily="PoppinsExtraBold"
-                               FontAttributes="Bold" />
+                               FontFamily="PoppinsSemiBold"/>
 
-                        <Label Text="Acesse sua conta para continuar"
-                               FontSize="14"
+                        <Label Text="Acesso do Tatuador"
+                               FontSize="25"
+                               HorizontalOptions="Center"
+                               TextColor="#77453f"
+                               FontFamily="Questrial"
+                               FontAttributes="Bold"/>
+
+                        <Label Text="Faça login para continuar"
+                               FontSize="16"
                                HorizontalOptions="Center"
                                TextColor="#49423c"
                                FontFamily="DMSansExtraLight"/>
 
-                        <!-- Email -->
+                        <!-- Campo Email -->
                         <Label Text="E-mail" TextColor="#49423c" FontFamily="DMSansExtraLight"/>
                         <Entry Placeholder="seu@email.com"
                                Text="{Binding Email}"
@@ -54,7 +63,7 @@
                                FontFamily="PoppinsRegular"
                                HorizontalOptions="FillAndExpand"/>
 
-                        <!-- Senha -->
+                        <!-- Campo Senha -->
                         <Label Text="Senha" TextColor="#49423c" FontFamily="DMSansExtraLight"/>
                         <StackLayout Orientation="Horizontal">
                             <Entry Placeholder="••••••••"
@@ -72,7 +81,7 @@
                                          HeightRequest="30"/>
                         </StackLayout>
 
-                        <!-- Botão Login -->
+                        <!-- Botão Entrar -->
                         <Button Text="Entrar"
                                 Command="{Binding SubmitCommand}"
                                 BackgroundColor="#800020"

@@ -6,26 +6,57 @@
     Shell.FlyoutBehavior="Flyout"
     Title="Gestão Estúdio Tatuagem">
 
+    <!-- Tela inicial (não aparece no menu) -->
+    <ShellContent 
+        Title="Home" 
+        ContentTemplate="{DataTemplate views:Home}" 
+        Route="Home" />
+
+    <!-- Telas no menu lateral -->
     <FlyoutItem Title="Login">
-        <ShellContent Title="Login" ContentTemplate="{DataTemplate views:TelaDeLogin}" Route="TelaDeLogin" />
+        <ShellContent 
+            Title="Login Cliente" 
+            ContentTemplate="{DataTemplate views:LoginCliente}" 
+            Route="LoginCliente" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Login Tatuador">
+        <ShellContent 
+            Title="Login Tatuador" 
+            ContentTemplate="{DataTemplate views:LoginTatuador}" 
+            Route="LoginTatuador" />
     </FlyoutItem>
 
     <FlyoutItem Title="Dashboard">
-        <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate views:Dashboard}" Route="Dashboard" />
+        <ShellContent 
+            Title="Dashboard" 
+            ContentTemplate="{DataTemplate views:Dashboard}" 
+            Route="Dashboard" />
     </FlyoutItem>
 
     <FlyoutItem Title="Agenda">
-        <ShellContent Title="Agenda" ContentTemplate="{DataTemplate views:Agenda}" Route="Agenda" />
+        <ShellContent 
+            Title="Agenda" 
+            ContentTemplate="{DataTemplate views:Agenda}" 
+            Route="Agenda" />
     </FlyoutItem>
 
     <FlyoutItem Title="Clientes">
-        <ShellContent Title="Lista de Clientes" ContentTemplate="{DataTemplate views:ListaDeClientes}" Route="ListaDeClientes" />
+        <ShellContent 
+            Title="Lista de Clientes" 
+            ContentTemplate="{DataTemplate views:ListaDeClientes}" 
+            Route="ListaDeClientes" />
     </FlyoutItem>
 
     <FlyoutItem Title="Tatuadores">
-        <ShellContent Title="Lista de Tatuadores" ContentTemplate="{DataTemplate views:TatuadorPage}" Route="TatuadorPage" />
+        <ShellContent 
+            Title="Lista de Tatuadores" 
+            ContentTemplate="{DataTemplate views:TatuadorPage}" 
+            Route="TatuadorPage" />
     </FlyoutItem>
 
-    <!-- ✅ Rota para a Tela de Cadastro -->
-    <ShellContent Title="Cadastro" ContentTemplate="{DataTemplate views:TelaDeCadastro}" Route="TelaDeCadastro" />
+    <ShellContent 
+        Title="Cadastro" 
+        ContentTemplate="{DataTemplate views:TelaDeCadastro}" 
+        Route="TelaDeCadastro" />
 </Shell>

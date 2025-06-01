@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestaoEstudioTatuagem.Views.Home"
+             Title="Home">
+
+    <Grid>
+        <!-- Fundo -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"/>
+
+        <VerticalStackLayout Padding="30"
+                              Spacing="30"
+                              VerticalOptions="Center">
+
+            <!-- Card completo -->
+            <Frame BackgroundColor="#e3dcce"
+                   CornerRadius="25"
+                   Padding="25"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="20">
+
+                    <!-- Logotipo -->
+                    <Image Source="logo.png"
+                           HeightRequest="250"
+                           HorizontalOptions="Center"/>
+
+                    <!-- Título -->
+                    <Label Text="Seja Bem-vindo!"
+                           FontSize="32"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           FontFamily="Questrial"
+                           TextColor="#49423c"/>
+
+                    <!-- Subtítulo -->
+                    <Label Text="Como você quer acessar?"
+                           FontSize="18"
+                           HorizontalOptions="Center"
+                           TextColor="#49423c"
+                           FontFamily="PoppinsRegular"/>
+
+                    <!-- Botões -->
+                    <VerticalStackLayout Spacing="15">
+
+                        <Button Text="Sou Cliente"
+                                BackgroundColor="#4a755e"
+                                TextColor="#e3dcce"
+                                CornerRadius="15"
+                                FontFamily="PoppinsExtraBold"
+                                HeightRequest="60"/>
+
+                        <Button Text="Sou Tatuador"
+                                BackgroundColor="#77453f"
+                                TextColor="#e3dcce"
+                                CornerRadius="15"
+                                FontFamily="PoppinsExtraBold"
+                                HeightRequest="60"/>
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

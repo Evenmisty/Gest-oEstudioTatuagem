@@ -122,6 +122,15 @@
 	  <MauiXaml Update="Views\ListaDeTatuadores.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Home.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginCliente.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginTatuador.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\TelaDeCadastro.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -129,9 +138,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ProntuarioEletronico.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\TelaDeLogin.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
@@ -146,6 +152,9 @@
 	  </Compile>
 	  <Compile Update="Views\ListaDeClientes.xaml.cs">
 	    <DependentUpon>ListaDeClientes.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Home.xaml.cs">
+	    <DependentUpon>Home.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\TelaDeCadastro.xaml.cs">
 	    <DependentUpon>TelaDeCadastro.xaml</DependentUpon>

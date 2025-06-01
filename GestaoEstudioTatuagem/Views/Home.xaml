@@ -50,14 +50,16 @@
                                 TextColor="#e3dcce"
                                 CornerRadius="15"
                                 FontFamily="PoppinsExtraBold"
-                                HeightRequest="60"/>
+                                HeightRequest="60"
+                                Clicked="OnClienteClicked"/>
 
                         <Button Text="Sou Tatuador"
                                 BackgroundColor="#77453f"
                                 TextColor="#e3dcce"
                                 CornerRadius="15"
                                 FontFamily="PoppinsExtraBold"
-                                HeightRequest="60"/>
+                                HeightRequest="60"
+                                Clicked="OnClienteClicked"/>
 
                     </VerticalStackLayout>
 

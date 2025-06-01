@@ -98,6 +98,12 @@
 	  <MauiXaml Update="Resources\Styles\Styles.xaml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\CadastroCliente.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CadastroTatuador.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Dashboard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -131,9 +137,6 @@
 	  <MauiXaml Update="Views\LoginTatuador.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TelaDeCadastro.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\TatuadorPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -155,9 +158,6 @@
 	  </Compile>
 	  <Compile Update="Views\Home.xaml.cs">
 	    <DependentUpon>Home.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\TelaDeCadastro.xaml.cs">
-	    <DependentUpon>TelaDeCadastro.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\TatuadorPage.xaml.cs">
 	    <DependentUpon>TatuadorPage.xaml</DependentUpon>

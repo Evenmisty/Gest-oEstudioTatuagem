@@ -1,0 +1,136 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+             x:Class="GestaoEstudioTatuagem.Views.CadastroTatuador"
+             Title="Cadastro Tatuador">
+
+    <ContentPage.BindingContext>
+        <viewmodels:CadastroTatuadorViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <!-- Imagem de fundo -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"/>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+                <!-- Card com logo e campos -->
+                <Frame BackgroundColor="#e3dcce"
+                       CornerRadius="20"
+                       Padding="25"
+                       HasShadow="True"
+                       BorderColor="Transparent">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <!-- Logo -->
+                        <Image Source="logo.png"
+                               HeightRequest="200"
+                               HorizontalOptions="Center" />
+
+                        <!-- Títulos -->
+                        <Label Text="Cadastro"
+                               FontSize="40"
+                               HorizontalOptions="Center"
+                               TextColor="#49423c"
+                               FontFamily="PoppinsSemiBold"
+                               FontAttributes="Bold"/>
+
+                        <Label Text="Acesso do Tatuador"
+                               FontSize="25"
+                               HorizontalOptions="Center"
+                               TextColor="#77453f"
+                               FontFamily="Questrial"
+                               FontAttributes="Bold"/>
+
+                        <Label Text="Preencha seus dados para continuar"
+                               FontSize="16"
+                               HorizontalOptions="Center"
+                               TextColor="#49423c"
+                               FontFamily="DMSansExtraLight"/>
+
+                        <!-- E-mail -->
+                        <Label Text="E-mail" TextColor="#49423c"/>
+                        <Entry Placeholder="seu@email.com"
+                               Text="{Binding Email}"
+                               Keyboard="Email"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- Senha -->
+                        <Label Text="Senha" TextColor="#49423c"/>
+                        <Entry Placeholder="••••••••"
+                               Text="{Binding Senha}"
+                               IsPassword="True"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- Nome Completo -->
+                        <Label Text="Nome Completo" TextColor="#49423c"/>
+                        <Entry Placeholder="Seu nome completo"
+                               Text="{Binding Nome}"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- CPF -->
+                        <Label Text="CPF" TextColor="#49423c"/>
+                        <Entry Placeholder="000.000.000-00"
+                               Text="{Binding CPF}"
+                               Keyboard="Numeric"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- Especialidade -->
+                        <Label Text="Especialidade" TextColor="#49423c"/>
+                        <Entry Placeholder="Ex.: Realismo, Old School..."
+                               Text="{Binding Especialidade}"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- Data de nascimento -->
+                        <Label Text="Data de Nascimento" TextColor="#49423c"/>
+                        <HorizontalStackLayout Spacing="10">
+                            <Entry Placeholder="dd/mm/aaaa"
+                                   Text="{Binding DataNascimento}"
+                                   Keyboard="Numeric"
+                                   BackgroundColor="#49423c"
+                                   TextColor="#e3dcce"
+                                   PlaceholderColor="#e3dcce"
+                                   HorizontalOptions="FillAndExpand"/>
+                            <ImageButton Source="calendar_icon.png"
+                                         BackgroundColor="Transparent"
+                                         WidthRequest="30"
+                                         HeightRequest="30"/>
+                        </HorizontalStackLayout>
+
+                        <!-- Portfólio (Instagram) -->
+                        <Label Text="Portfólio" TextColor="#49423c"/>
+                        <Entry Placeholder="@seuInstagram"
+                               Text="{Binding Instagram}"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- Botão cadastrar -->
+                        <Button Text="Cadastrar"
+                                Command="{Binding CadastrarCommand}"
+                                BackgroundColor="#4a755e"
+                                TextColor="White"
+                                CornerRadius="10"
+                                HeightRequest="50"/>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

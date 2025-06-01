@@ -1,0 +1,115 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+             x:Class="GestaoEstudioTatuagem.Views.CadastroCliente"
+             Title="Cadastro Cliente">
+
+    <ContentPage.BindingContext>
+        <viewmodels:CadastroClienteViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <!-- Imagem de fundo -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"/>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+                <!-- Card com logo e textos -->
+                <Frame BackgroundColor="#e3dcce"
+                       CornerRadius="20"
+                       Padding="25"
+                       HasShadow="True"
+                       BorderColor="Transparent">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <!-- Logo -->
+                        <Image Source="logo.png"
+                               HeightRequest="200"
+                               HorizontalOptions="Center" />
+
+                        <!-- Título -->
+                        <Label Text="Cadastro"
+                               FontSize="40"
+                               HorizontalOptions="Center"
+                               TextColor="#49423c"
+                               FontFamily="PoppinsSemiBold"
+                               FontAttributes="Bold"/>
+
+                        <Label Text="Acesso do Cliente"
+                               FontSize="25"
+                               HorizontalOptions="Center"
+                               TextColor="#77453f"
+                               FontFamily="Questrial"
+                               FontAttributes="Bold"/>
+
+                        <Label Text="Preencha seus dados para continuar"
+                               FontSize="16"
+                               HorizontalOptions="Center"
+                               TextColor="#49423c"
+                               FontFamily="DMSansExtraLight"/>
+
+                        <!-- E-mail -->
+                        <Label Text="E-mail" TextColor="#49423c"/>
+                        <Entry Placeholder="seu@email.com"
+                               Keyboard="Email"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- Senha -->
+                        <Label Text="Senha" TextColor="#49423c"/>
+                        <Entry Placeholder="••••••••"
+                               IsPassword="True"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- Nome Completo -->
+                        <Label Text="Nome Completo" TextColor="#49423c"/>
+                        <Entry Placeholder="Seu nome completo"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- Telefone -->
+                        <Label Text="Telefone" TextColor="#49423c"/>
+                        <Entry Placeholder="(00) 00000-0000"
+                               Keyboard="Telephone"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- Data de nascimento -->
+                        <Label Text="Data de Nascimento" TextColor="#49423c"/>
+                        <HorizontalStackLayout Spacing="10">
+                            <Entry Placeholder="dd/mm/aaaa"
+                                   Keyboard="Numeric"
+                                   BackgroundColor="#49423c"
+                                   TextColor="#e3dcce"
+                                   PlaceholderColor="#e3dcce"
+                                   HorizontalOptions="FillAndExpand"/>
+                            <ImageButton Source="calendar_icon.png"
+                                         BackgroundColor="Transparent"
+                                         WidthRequest="30"
+                                         HeightRequest="30"/>
+                        </HorizontalStackLayout>
+
+                        <!-- Botão cadastrar -->
+                        <Button Text="Cadastrar"
+                                BackgroundColor="#4a755e"
+                                TextColor="White"
+                                CornerRadius="10"
+                                HeightRequest="50"/>
+
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Fim do card -->
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

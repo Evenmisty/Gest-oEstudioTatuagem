@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+    x:Class="GestaoEstudioTatuagem.Views.EscolherEstudio"
+    Title="Escolher Estúdio">
+
+    <ContentPage.BindingContext>
+        <viewmodel:EscolherEstudioViewModel />
+    </ContentPage.BindingContext>
+
+    <!--IMAGEM DE FUNDO-->
+    <Grid>
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5" />
+
+        <!-- CARD CLARO-->
+        <Frame BackgroundColor="#e3dcce"
+               CornerRadius="25"
+               Padding="20"
+               Margin="20"
+               HasShadow="True"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               WidthRequest="350">
+
+            <!-- TÍTULO E LISTAGEM -->
+            <VerticalStackLayout Spacing="20">
+
+                <!-- TÍTULO-->
+                <Label Text="Escolha um Estúdio"
+                       FontSize="28"
+                       TextColor="#49423c"
+                       FontFamily="PoppinsSemiBold"
+                       HorizontalOptions="Center" />
+
+                <!-- SUBTÍTULO-->
+                <Label Text="Acesse um Estúdio"
+                       FontSize="22"
+                       HorizontalOptions="Center"
+                       TextColor="#77453f"
+                       FontFamily="Questrial"
+                       FontAttributes="Bold" />
+
+                <!-- LISTA DE ESTÚDIOS-->
+                <CollectionView ItemsSource="{Binding ListaEstudios}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding EstudioSelecionado, Mode=TwoWay}"
+                                Margin="0,0,0,10"
+                                WidthRequest="310">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="#9f8f7f"
+                                   Padding="10"
+                                   CornerRadius="10"
+                                   BackgroundColor="#77453f"
+                                   Margin="5,5">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Nome}"
+                                           FontSize="20"
+                                           TextColor="#e3dcce"
+                                           FontFamily="DMSansLight"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding Endereco}"
+                                           FontSize="16"
+                                           TextColor="#9f8f7f"
+                                           FontFamily="OpenSansRegular"
+                                           FontAttributes="Bold, Italic"/>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+                <!-- BOTÃO PRÓXIMO -->
+                <Button Text="Próximo"
+                        BackgroundColor="#4a755e"
+                        TextColor="#e3dcce"
+                        FontSize="16"
+                        FontFamily="PoppinsExtraBold"
+                        CornerRadius="10"
+                        Command="{Binding ProximoCommand}"
+                        IsEnabled="{Binding EstudioSelecionado, Converter={StaticResource NullToBoolConverter}}"
+                        HeightRequest="55"
+                        HorizontalOptions="FillAndExpand" />
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

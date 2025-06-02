@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
              x:Class="GestaoEstudioTatuagem.Views.CadastroTatuador"
-             Title="Cadastro Tatuador">
+             Title="Cadastro Estúdio">
 
     <ContentPage.BindingContext>
         <viewmodels:CadastroTatuadorViewModel />
@@ -39,15 +39,15 @@
                                FontFamily="PoppinsSemiBold"
                                FontAttributes="Bold"/>
 
-                        <Label Text="Acesso do Tatuador"
+                        <Label Text="Acesso do Estúdio"
                                FontSize="25"
                                HorizontalOptions="Center"
                                TextColor="#77453f"
                                FontFamily="Questrial"
                                FontAttributes="Bold"/>
 
-                        <Label Text="Preencha seus dados para continuar"
-                               FontSize="16"
+                        <Label Text="Preencha os dados do estúdio para continuar"
+                               FontSize="14"
                                HorizontalOptions="Center"
                                TextColor="#49423c"
                                FontFamily="DMSansExtraLight"/>
@@ -70,18 +70,18 @@
                                TextColor="#e3dcce"
                                PlaceholderColor="#e3dcce"/>
 
-                        <!-- Nome Completo -->
-                        <Label Text="Nome Completo" TextColor="#49423c"/>
-                        <Entry Placeholder="Seu nome completo"
+                        <!-- Nome do Estúdio -->
+                        <Label Text="Nome do Estúdio" TextColor="#49423c"/>
+                        <Entry Placeholder="Nome fantasia"
                                Text="{Binding Nome}"
                                BackgroundColor="#49423c"
                                TextColor="#e3dcce"
                                PlaceholderColor="#e3dcce"/>
 
-                        <!-- CPF -->
-                        <Label Text="CPF" TextColor="#49423c"/>
-                        <Entry Placeholder="000.000.000-00"
-                               Text="{Binding CPF}"
+                        <!-- CNPJ (opcional) -->
+                        <Label Text="CNPJ (opcional)" TextColor="#49423c"/>
+                        <Entry Placeholder="00.000.000/0000-00"
+                               Text="{Binding CNPJ}"
                                Keyboard="Numeric"
                                BackgroundColor="#49423c"
                                TextColor="#e3dcce"
@@ -95,26 +95,36 @@
                                TextColor="#e3dcce"
                                PlaceholderColor="#e3dcce"/>
 
-                        <!-- Data de nascimento -->
-                        <Label Text="Data de Nascimento" TextColor="#49423c"/>
-                        <HorizontalStackLayout Spacing="10">
-                            <Entry Placeholder="dd/mm/aaaa"
-                                   Text="{Binding DataNascimento}"
-                                   Keyboard="Numeric"
-                                   BackgroundColor="#49423c"
-                                   TextColor="#e3dcce"
-                                   PlaceholderColor="#e3dcce"
-                                   HorizontalOptions="FillAndExpand"/>
-                            <ImageButton Source="calendar_icon.png"
-                                         BackgroundColor="Transparent"
-                                         WidthRequest="30"
-                                         HeightRequest="30"/>
-                        </HorizontalStackLayout>
+                        <!-- Endereço -->
+                        <Label Text="Endereço" TextColor="#49423c"/>
+                        <Entry Placeholder="Rua, número, bairro, cidade"
+                               Text="{Binding Endereco}"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <!-- Telefone/WhatsApp -->
+                        <Label Text="Telefone/WhatsApp" TextColor="#49423c"/>
+                        <Entry Placeholder="(00) 00000-0000"
+                               Text="{Binding Telefone}"
+                               Keyboard="Telephone"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
 
                         <!-- Portfólio (Instagram) -->
-                        <Label Text="Portfólio" TextColor="#49423c"/>
-                        <Entry Placeholder="@seuInstagram"
+                        <Label Text="Instagram (opcional)" TextColor="#49423c"/>
+                        <Entry Placeholder="Ex.: @seuInstagram ou deixe em branco"
                                Text="{Binding Instagram}"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+
+                        <!-- Descrição -->
+                        <Label Text="Descrição do Estúdio" TextColor="#49423c"/>
+                        <Entry Placeholder="Fale sobre seu estúdio, estilos, etc."
+                               Text="{Binding Descricao}"
                                BackgroundColor="#49423c"
                                TextColor="#e3dcce"
                                PlaceholderColor="#e3dcce"/>

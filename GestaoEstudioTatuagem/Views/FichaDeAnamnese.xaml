@@ -1,110 +1,267 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:GestaoEstudioTatuagem.ViewModels"
     x:Class="GestaoEstudioTatuagem.Views.FichaDeAnamnese"
-    Title="Ficha de Anamnese"
-    BackgroundColor="#1e1e1e">
+    Title="Ficha de Anamnese">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+    <ContentPage.BindingContext>
+        <viewmodel:FichaDeAnamneseViewModel />
+    </ContentPage.BindingContext>
 
-            <Label
-                Text="Ficha de Anamnese"
-                FontSize="28"
-                TextColor="White"
-                HorizontalOptions="Center" 
-                FontAttributes="Bold"/>
+    <Grid>
+        <!-- Imagem de fundo -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5" />
 
-            <!-- Switch + Label para “Preenchida?” -->
-            <HorizontalStackLayout VerticalOptions="Center">
-                <Switch 
-                    IsToggled="{Binding Preenchida}" 
-                    ThumbColor="#ff4081" 
-                    OnColor="#2ecc71" />
-                <Label
-                    Text="Preenchida?"
-                    TextColor="White"
-                    VerticalTextAlignment="Center"
-                    Margin="8,0,0,0" />
-            </HorizontalStackLayout>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
 
-            <!-- Editor para Observações -->
-            <Label 
-                Text="Observações"
-                TextColor="White"
-                FontAttributes="Bold" />
-            <Frame BackgroundColor="#2a2a2a" CornerRadius="10" Padding="5">
-                <Editor
-                    Placeholder="Digite suas observações aqui..."
-                    Text="{Binding Observacoes}"
-                    AutoSize="TextChanges"
-                    BackgroundColor="Transparent"
-                    TextColor="White"
-                    PlaceholderColor="#808080"
-                    HeightRequest="120" />
-            </Frame>
+                <!-- Card -->
+                <Frame BackgroundColor="#e3dcce"
+                       CornerRadius="25"
+                       Padding="20"
+                       HasShadow="True">
 
-            <!-- Editor para Cuidados Posteriores -->
-            <Label 
-                Text="Cuidados Posteriores"
-                TextColor="White"
-                FontAttributes="Bold" />
-            <Frame BackgroundColor="#2a2a2a" CornerRadius="10" Padding="5">
-                <Editor
-                    Placeholder="Instruções para o cliente"
-                    Text="{Binding CuidadosPosteriores}"
-                    AutoSize="TextChanges"
-                    BackgroundColor="Transparent"
-                    TextColor="White"
-                    PlaceholderColor="#808080"
-                    HeightRequest="120" />
-            </Frame>
+                    <VerticalStackLayout Spacing="15">
 
-            <!-- Botão Selecionar Fotos -->
-            <Button
-                Text="Selecionar Fotos"
-                BackgroundColor="#3b3b3b"
-                TextColor="White"
-                Clicked="SelecionarFotos_Clicked"
-                CornerRadius="10"
-                FontAttributes="Bold" 
-                HeightRequest="50"/>
+                        <!-- Título -->
+                        <Label Text="Ficha de Anamnese"
+                               FontSize="28"
+                               HorizontalOptions="Center"
+                               TextColor="#49423c"
+                               FontFamily="PoppinsSemiBold" />
 
-            <!-- Visualização de Fotos Selecionadas -->
-            <CollectionView x:Name="FotosPreview" ItemsSource="{Binding ImagensSelecionadas}" HeightRequest="120">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame Padding="2" BackgroundColor="#444" CornerRadius="8">
-                            <Image Source="{Binding .}" WidthRequest="100" HeightRequest="100" Aspect="AspectFill" />
+                        <!-- Subtítulo -->
+                        <Label Text="Preencha seus dados de saúde"
+                               FontSize="20"
+                               HorizontalOptions="Center"
+                               TextColor="#77453f"
+                               FontFamily="Questrial"/>
+
+                        <!-- Perguntas -->
+
+                        <!-- Alergia -->
+                        <Label Text="Possui alergia?" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding TemAlergia}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
                         </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                        <Frame BackgroundColor="#49423c" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Editor Placeholder="Se sim, quais?"
+                                    Text="{Binding QuaisAlergias}"
+                                    BackgroundColor="#49423c"
+                                    TextColor="#e3dcce"
+                                    PlaceholderColor="#e3dcce"
+                                    AutoSize="TextChanges"
+                                    HeightRequest="80"/>
+                        </Frame>
 
-            <!-- Botão Salvar e Cancelar -->
-            <HorizontalStackLayout Spacing="10">
-                <Button
-                    Text="Salvar"
-                    Command="{Binding SalvarCommand}"
-                    BackgroundColor="#ff4081"
-                    TextColor="White"
-                    CornerRadius="10"
-                    FontAttributes="Bold"
-                    HeightRequest="50"
-                    HorizontalOptions="FillAndExpand" />
+                        <!-- Medicação contínua -->
+                        <Label Text="Usa medicação contínua?" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding UsaMedicacao}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+                        <Frame BackgroundColor="#49423c" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Editor Placeholder="Se sim, qual?"
+                                    Text="{Binding QualMedicacao}"
+                                    BackgroundColor="#49423c"
+                                    TextColor="#e3dcce"
+                                    PlaceholderColor="#e3dcce"
+                                    AutoSize="TextChanges"
+                                    HeightRequest="80"/>
+                        </Frame>
 
-                <Button
-                    Text="Cancelar"
-                    Command="{Binding CancelarCommand}"
-                    BackgroundColor="#555555"
-                    TextColor="White"
-                    CornerRadius="10"
-                    FontAttributes="Bold"
-                    HeightRequest="50"
-                    HorizontalOptions="FillAndExpand" />
-            </HorizontalStackLayout>
+                        <!-- Doença pré-existente -->
+                        <Label Text="Possui alguma doença pré-existente?" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding TemDoencaPreExistente}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+                        <Frame BackgroundColor="#49423c" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Editor Placeholder="Se sim, quais?"
+                                    Text="{Binding QuaisDoencas}"
+                                    BackgroundColor="#49423c"
+                                    TextColor="#e3dcce"
+                                    PlaceholderColor="#e3dcce"
+                                    AutoSize="TextChanges"
+                                    HeightRequest="80"/>
+                        </Frame>
 
-        </VerticalStackLayout>
-    </ScrollView>
+                        <!-- Já fez tatuagem -->
+                        <Label Text="Já fez tatuagem antes?" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding JaFezTatuagem}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+
+                        <!-- Problema de cicatrização -->
+                        <Label Text="Possui problema de cicatrização?" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding ProblemaCicatrizacao}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+
+                        <!-- Está grávida -->
+                        <Label Text="Está grávida? (se aplicável)" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding EstaGravida}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+
+                        <!-- Diabetes -->
+                        <Label Text="Possui diabetes?" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding TemDiabetes}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+                        <Frame BackgroundColor="#49423c" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Editor Placeholder="Se sim, qual tipo?"
+                                    Text="{Binding TipoDiabetes}"
+                                    BackgroundColor="#49423c"
+                                    TextColor="#e3dcce"
+                                    PlaceholderColor="#e3dcce"
+                                    AutoSize="TextChanges"
+                                    HeightRequest="80"/>
+                        </Frame>
+
+                        <!-- Hepatite -->
+                        <Label Text="Possui hepatite?" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding TemHepatite}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+
+                        <!-- Fumante -->
+                        <Label Text="Você é fumante?" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding Fumante}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+
+                        <!-- Vitiligo -->
+                        <Label Text="Possui vitiligo?" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding TemVitiligo}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+
+                        <!-- Doença autoimune -->
+                        <Label Text="Possui doença autoimune?" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Picker Title="Selecione"
+                                    ItemsSource="{Binding OpcoesSimNao}"
+                                    SelectedItem="{Binding TemDoencaAutoimune}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+
+                        <!-- Observações -->
+                        <Label Text="Observações" TextColor="#49423c" FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#49423c" CornerRadius="10" Padding="5" HasShadow="False">
+                            <Editor Placeholder="Observações adicionais"
+                                    Text="{Binding Observacoes}"
+                                    BackgroundColor="#49423c"
+                                    TextColor="#e3dcce"
+                                    PlaceholderColor="#e3dcce"
+                                    AutoSize="TextChanges"
+                                    HeightRequest="100"/>
+                        </Frame>
+
+                        <!-- Selecionar Fotos -->
+                        <Label Text="Fotos do Procedimento"
+                               TextColor="#49423c"
+                               FontFamily="Questrial"/>
+
+                        <Button Text="Selecionar Fotos"
+                                Clicked="SelecionarFotos_Clicked"
+                                BackgroundColor="#4a755e"
+                                TextColor="#e3dcce"
+                                FontFamily="PoppinsExtraBold"
+                                CornerRadius="10"/>
+
+                        <CollectionView x:Name="FotosPreview"
+                                        HeightRequest="120"
+                                        ItemsSource="{Binding ImagensSelecionadas}"
+                                        ItemsLayout="HorizontalList">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Padding="5"
+                                           BackgroundColor="#e3dcce"
+                                           CornerRadius="10"
+                                           HasShadow="True"
+                                           Margin="5">
+                                        <Image Source="{Binding .}"
+                                               Aspect="AspectFill"
+                                               WidthRequest="100"
+                                               HeightRequest="100"/>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <!-- Botões -->
+                        <Button Text="Salvar"
+                                BackgroundColor="#4a755e"
+                                TextColor="#e3dcce"
+                                FontFamily="PoppinsExtraBold"
+                                CornerRadius="10"
+                                Command="{Binding SalvarCommand}"/>
+
+                        <Button Text="Cancelar"
+                                BackgroundColor="#555555"
+                                TextColor="#e3dcce"
+                                FontFamily="PoppinsExtraBold"
+                                CornerRadius="10"
+                                Command="{Binding CancelarCommand}"/>
+
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

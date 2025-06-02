@@ -2,8 +2,13 @@
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
     x:Class="GestaoEstudioTatuagem.Views.Dashboard"
     Title="Dashboard">
+
+    <ContentPage.BindingContext>
+        <viewmodels:DashboardViewModel />
+    </ContentPage.BindingContext>
 
     <Grid>
         <!-- Imagem de Fundo -->
@@ -120,17 +125,26 @@
                                FontSize="22"
                                TextColor="#49423c"
                                FontFamily="Questrial"/>
+
                         <Button Text="Agendar Sessão"
                                 BackgroundColor="#4a755e"
                                 TextColor="#e3dcce"
                                 CornerRadius="10"
                                 FontFamily="PoppinsExtraBold"/>
+
                         <Button Text="Novo Cliente"
                                 BackgroundColor="#4a755e"
                                 TextColor="#e3dcce"
                                 CornerRadius="10"
                                 FontFamily="PoppinsExtraBold"/>
-                        <Button Text="Consultar Agenda"
+
+                        <Button Text="Lista de Clientes"
+                                BackgroundColor="#4a755e"
+                                TextColor="#e3dcce"
+                                CornerRadius="10"
+                                FontFamily="PoppinsExtraBold"/>
+
+                        <Button Text="Lista de Tatuadores"
                                 BackgroundColor="#4a755e"
                                 TextColor="#e3dcce"
                                 CornerRadius="10"

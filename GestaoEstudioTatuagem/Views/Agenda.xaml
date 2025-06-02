@@ -28,7 +28,7 @@
                 <VerticalStackLayout Spacing="15">
 
                     <!-- Título -->
-                    <Label Text="AGENDAMENTOS"
+                    <Label Text="AGENDA"
                            FontSize="32"
                            HorizontalOptions="Center"
                            FontFamily="Questrial"

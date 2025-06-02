@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+    x:Class="GestaoEstudioTatuagem.Views.NovoAgendamento"
+    Title="Novo Agendamento">
+
+    <ContentPage.BindingContext>
+        <viewmodel:NovoAgendamentoViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <!-- Imagem de Fundo -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"/>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!-- Card -->
+                <Frame BackgroundColor="#e3dcce"
+                       CornerRadius="20"
+                       Padding="20"
+                       HasShadow="True">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <!-- Título -->
+                        <Label Text="Novo Agendamento"
+                               FontSize="28"
+                               HorizontalOptions="Center"
+                               TextColor="#49423c"
+                               FontFamily="PoppinsSemiBold"/>
+
+                        <!-- Cliente -->
+                        <Label Text="Cliente"
+                               TextColor="#49423c"
+                               FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f"
+                               CornerRadius="10"
+                               Padding="5"
+                               HasShadow="False">
+                            <Picker Title="Selecione o Cliente"
+                                    ItemsSource="{Binding ListaDeClientes}"
+                                    SelectedItem="{Binding ClienteSelecionado}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+
+                        <!-- Tatuador -->
+                        <Label Text="Tatuador"
+                               TextColor="#49423c"
+                               FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f"
+                               CornerRadius="10"
+                               Padding="5"
+                               HasShadow="False">
+                            <Picker Title="Selecione o Tatuador"
+                                    ItemsSource="{Binding ListaDeTatuadores}"
+                                    SelectedItem="{Binding TatuadorSelecionado}"
+                                    BackgroundColor="#77453f"
+                                    TextColor="#e3dcce"
+                                    TitleColor="#e3dcce"/>
+                        </Frame>
+
+                        <!-- Data -->
+                        <Label Text="Data"
+                               TextColor="#49423c"
+                               FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f"
+                               CornerRadius="10"
+                               Padding="5"
+                               HasShadow="False">
+                            <DatePicker Date="{Binding DataSelecionada}"
+                                        TextColor="#e3dcce"
+                                        BackgroundColor="#77453f"/>
+                        </Frame>
+
+                        <!-- Horário -->
+                        <Label Text="Horário"
+                               TextColor="#49423c"
+                               FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#77453f"
+                               CornerRadius="10"
+                               Padding="5"
+                               HasShadow="False">
+                            <TimePicker Time="{Binding HorarioSelecionado}"
+                                        TextColor="#e3dcce"
+                                        BackgroundColor="#77453f"/>
+                        </Frame>
+
+                        <!-- Descrição -->
+                        <Label Text="Descrição"
+                               TextColor="#49423c"
+                               FontFamily="Questrial"/>
+                        <Frame BackgroundColor="#49423c"
+                               CornerRadius="10"
+                               Padding="5"
+                               HasShadow="False">
+                            <Editor Placeholder="Descrição da sessão"
+                                    Text="{Binding Descricao}"
+                                    AutoSize="TextChanges"
+                                    BackgroundColor="#49423c"
+                                    TextColor="#e3dcce"
+                                    PlaceholderColor="#e3dcce"
+                                    HeightRequest="100"/>
+                        </Frame>
+
+                        <!-- Botão -->
+                        <Button Text="Salvar Agendamento"
+                                BackgroundColor="#4a755e"
+                                TextColor="#e3dcce"
+                                FontFamily="PoppinsExtraBold"
+                                CornerRadius="10"
+                                Command="{Binding SalvarCommand}"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

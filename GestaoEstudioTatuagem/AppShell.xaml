@@ -71,4 +71,56 @@
             Route="CadastroCliente" />
     </FlyoutItem>
 
+    <!-- Novo Cliente -->
+    <FlyoutItem Title="Novo Cliente">
+        <ShellContent 
+            Title="Novo Cliente" 
+            ContentTemplate="{DataTemplate views:NovoCliente}" 
+            Route="NovoCliente" />
+    </FlyoutItem>
+
+    <!-- Novo Agendamento -->
+
+    <FlyoutItem Title="Novo Agendamento">
+        <ShellContent 
+            Title="Novo Agendamento" 
+            ContentTemplate="{DataTemplate views:NovoAgendamento}" 
+            Route="NovoAgendamento" />
+    </FlyoutItem>
+    
+    <!-- Escolher Estudio-->
+
+    <FlyoutItem Title="Escolher Estudio">
+        <ShellContent
+            Title="Escolha um Estúdio"
+            ContentTemplate="{DataTemplate views:EscolherEstudio}"
+            Route="EscolherEStudio"/>
+    </FlyoutItem>
+    
+    <!--Escolher Tatuador-->
+
+    <FlyoutItem Title="Escolher Tatuador">
+        <ShellContent
+            Title="Escolha um Tatuador"
+            ContentTemplate="{DataTemplate views:EscolherTatuador}"
+            Route="EscolherTatuador"/>
+    </FlyoutItem>
+
+    <!--Agendar Tatuagem (fluxo cliente)-->
+    <FlyoutItem Title="Agendar Tatuagem">
+        <ShellContent
+            Title="Agendar Tatuagem"
+            ContentTemplate="{DataTemplate views:AgendarTatuagem}"
+            Route="AgendarTatuagem"/>
+        </FlyoutItem>
+    
+    <!-- Ficha Anamnese -->
+
+    <FlyoutItem Title="Ficha Anamnese">
+        <ShellContent
+            Title="Ficha Anamnese"
+            ContentTemplate="{DataTemplate views:FichaDeAnamnese}"
+            Route="FichaAnamnese" />
+    </FlyoutItem>
+
 </Shell>

@@ -36,8 +36,8 @@
                                FontSize="40"
                                HorizontalOptions="Center"
                                TextColor="#49423c"
-                               FontFamily="PoppinsSemiBold"
-                               FontAttributes="Bold"/>
+                               FontFamily="PoppinsSemiBold"/>
+
 
                         <Label Text="Acesso do Cliente"
                                FontSize="25"

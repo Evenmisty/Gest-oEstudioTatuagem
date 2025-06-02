@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+    x:Class="GestaoEstudioTatuagem.Views.NovoCliente"
+    Title="Novo Cliente">
+
+    <ContentPage.BindingContext>
+        <viewmodels:NovoClienteViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <!-- Imagem de Fundo -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"/>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+                <Frame BackgroundColor="#e3dcce"
+                       CornerRadius="20"
+                       Padding="25"
+                       HasShadow="True"
+                       BorderColor="Transparent">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label Text="Novo Cliente"
+                               FontSize="40"
+                               HorizontalOptions="Center"
+                               TextColor="#49423c"
+                               FontFamily="PoppinsSemiBold"/>
+
+
+                        <Label Text="Preencha os dados do cliente"
+                               FontSize="16"
+                               HorizontalOptions="Center"
+                               TextColor="#49423c"
+                               FontFamily="DMSansExtraLight"/>
+
+                        <Label Text="Nome Completo" TextColor="#49423c"/>
+                        <Entry Placeholder="Nome completo"
+                               Text="{Binding Nome}"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <Label Text="E-mail" TextColor="#49423c"/>
+                        <Entry Placeholder="email@cliente.com"
+                               Text="{Binding Email}"
+                               Keyboard="Email"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <Label Text="Telefone" TextColor="#49423c"/>
+                        <Entry Placeholder="(00) 00000-0000"
+                               Text="{Binding Telefone}"
+                               Keyboard="Telephone"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <Label Text="Data de Nascimento" TextColor="#49423c"/>
+                        <Entry Placeholder="dd/mm/aaaa"
+                               Text="{Binding DataNascimento}"
+                               Keyboard="Numeric"
+                               BackgroundColor="#49423c"
+                               TextColor="#e3dcce"
+                               PlaceholderColor="#e3dcce"/>
+
+                        <Button Text="Cadastrar Cliente"
+                                Command="{Binding CadastrarClienteCommand}"
+                                BackgroundColor="#4a755e"
+                                TextColor="White"
+                                CornerRadius="10"
+                                HeightRequest="50"/>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

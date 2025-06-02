@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+    x:Class="GestaoEstudioTatuagem.Views.AgendarTatuagem"
+    Title="Agendar Tatuagem">
+
+    <ContentPage.BindingContext>
+        <viewmodel:AgendarTatuagemViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <!-- Imagem de fundo -->
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5" />
+
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!-- Card claro -->
+                <Frame BackgroundColor="#e3dcce"
+                       CornerRadius="25"
+                       Padding="20"
+                       HasShadow="True">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <!-- Título -->
+                        <Label Text="Agendar Tatuagem"
+                               FontSize="28"
+                               HorizontalOptions="Center"
+                               TextColor="#49423c"
+                               FontFamily="PoppinsSemiBold" />
+                        
+                        <!--subtítulo -->
+
+                        <Label Text="Escolha um horário"
+                               FontSize="20"
+                               HorizontalOptions="Center"
+                               TextColor="#77453f"
+                               FontFamily="Questrial"/>
+
+                        <!-- Data -->
+                        <Label Text="Data"
+                               TextColor="#49423c"
+                               FontFamily="Questrial" />
+                        <Frame BackgroundColor="#77453f"
+                               CornerRadius="10"
+                               Padding="5"
+                               HasShadow="False">
+                            <DatePicker Date="{Binding DataSelecionada}"
+                                        TextColor="#e3dcce"
+                                        BackgroundColor="#77453f" />
+                        </Frame>
+
+                        <!-- Horário -->
+                        <Label Text="Horário"
+                               TextColor="#49423c"
+                               FontFamily="Questrial" />
+                        <Frame BackgroundColor="#77453f"
+                               CornerRadius="10"
+                               Padding="5"
+                               HasShadow="False">
+                            <TimePicker Time="{Binding HorarioSelecionado}"
+                                        TextColor="#e3dcce"
+                                        BackgroundColor="#77453f" />
+                        </Frame>
+
+                        <!-- Descrição -->
+                        <Label Text="Descrição"
+                               TextColor="#49423c"
+                               FontFamily="Questrial" />
+                        <Frame BackgroundColor="#49423c"
+                               CornerRadius="10"
+                               Padding="5"
+                               HasShadow="False">
+                            <Editor Placeholder="Descrição da tatuagem"
+                                    Text="{Binding Descricao}"
+                                    AutoSize="TextChanges"
+                                    BackgroundColor="#49423c"
+                                    TextColor="#e3dcce"
+                                    PlaceholderColor="#e3dcce"
+                                    HeightRequest="100" />
+                        </Frame>
+
+                        <!-- Botão -->
+                        <Button Text="Agendar"
+                                BackgroundColor="#4a755e"
+                                TextColor="#e3dcce"
+                                FontFamily="PoppinsExtraBold"
+                                CornerRadius="10"
+                                Command="{Binding AgendarCommand}"
+                                IsEnabled="{Binding PodeAgendar}" />
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

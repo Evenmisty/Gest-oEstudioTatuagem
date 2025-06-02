@@ -45,6 +45,9 @@ namespace GestaoEstudioTatuagem.ViewModels
 
             await App.Current.MainPage.DisplayAlert("Estúdio Selecionado",
                 $"Você escolheu: {EstudioSelecionado.Nome}", "OK");
+
+            await Shell.Current.GoToAsync("//EscolherTatuador");
         }
+
     }
 }

@@ -1,9 +1,16 @@
-namespace GestaoEstudioTatuagem.Views;
+using Microsoft.Maui.Controls;
+using GestaoEstudioTatuagem.ViewModels;
 
-public partial class LoginCliente : ContentPage
+namespace GestaoEstudioTatuagem.Views
 {
-	public LoginCliente()
-	{
-		InitializeComponent();
-	}
+    public partial class LoginCliente : ContentPage
+    {
+        public LoginCliente()
+        {
+            InitializeComponent();
+            var vm = new TelaDeLoginViewModel();
+            vm.Perfil = "Cliente";
+            BindingContext = vm;
+        }
+    }
 }

@@ -124,31 +124,36 @@
                         <Label Text="Acesso Rápido"
                                FontSize="22"
                                TextColor="#49423c"
-                               FontFamily="Questrial"/>
+                               FontFamily="Questrial"
+                               />
 
                         <Button Text="Agendar Sessão"
                                 BackgroundColor="#4a755e"
                                 TextColor="#e3dcce"
                                 CornerRadius="10"
-                                FontFamily="PoppinsExtraBold"/>
+                                FontFamily="PoppinsExtraBold"
+                                Command="{Binding AgendarSessao}"/>
 
                         <Button Text="Novo Cliente"
                                 BackgroundColor="#4a755e"
                                 TextColor="#e3dcce"
                                 CornerRadius="10"
-                                FontFamily="PoppinsExtraBold"/>
+                                FontFamily="PoppinsExtraBold"
+                                Command="{Binding NovoCliente}"/>
 
                         <Button Text="Lista de Clientes"
                                 BackgroundColor="#4a755e"
                                 TextColor="#e3dcce"
                                 CornerRadius="10"
-                                FontFamily="PoppinsExtraBold"/>
+                                FontFamily="PoppinsExtraBold"
+                                Command="{Binding ListaClientes}"/>
 
                         <Button Text="Lista de Tatuadores"
                                 BackgroundColor="#4a755e"
                                 TextColor="#e3dcce"
                                 CornerRadius="10"
-                                FontFamily="PoppinsExtraBold"/>
+                                FontFamily="PoppinsExtraBold"
+                                Command="{Binding ListaTatuadores}"/>
                     </VerticalStackLayout>
                 </Frame>
 

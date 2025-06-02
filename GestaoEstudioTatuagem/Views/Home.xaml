@@ -59,7 +59,7 @@
                                 CornerRadius="15"
                                 FontFamily="PoppinsExtraBold"
                                 HeightRequest="60"
-                                Clicked="OnClienteClicked"/>
+                                Clicked="OnTatuadorClicked"/>
 
                     </VerticalStackLayout>
 

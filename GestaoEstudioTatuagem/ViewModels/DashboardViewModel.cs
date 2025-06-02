@@ -45,6 +45,31 @@ namespace GestaoEstudioTatuagem.ViewModels
         {
             await Shell.Current.GoToAsync("//Agenda");
         }
+
+        [RelayCommand]
+        private async Task AgendarSessao()
+        {
+            await Shell.Current.GoToAsync("//AgendarTatuagem");
+        }
+
+        [RelayCommand]
+        private async Task NovoCliente()
+        {
+            await Shell.Current.GoToAsync("//NovoCliente");
+        }
+
+        [RelayCommand]
+        private async Task ListaClientes()
+        {
+            await Shell.Current.GoToAsync("//ListaDeClientes");
+        }
+
+        [RelayCommand]
+        private async Task ListaTatuadores()
+        {
+            await Shell.Current.GoToAsync("//TatuadorPage");
+        }
+
     }
 
     // Classe para representar o ProximoAgendamento

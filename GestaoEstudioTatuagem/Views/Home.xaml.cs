@@ -8,12 +8,12 @@ public partial class Home : ContentPage
     }
     private async void OnClienteClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new TelaDeCadastro());
+        await Shell.Current.GoToAsync("//LoginCliente");
     }
 
     private async void OnTatuadorClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new TelaDeCadastro());
+        await Shell.Current.GoToAsync("//LoginTatuador");
     }
 
 }

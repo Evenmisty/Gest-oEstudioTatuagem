@@ -2,6 +2,10 @@
 using CommunityToolkit.Mvvm.Input;
 using System.Threading.Tasks;
 using GestaoEstudioTatuagem.Models;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using System.Text;
+using GestaoEstudioTatuagem.Helpers;
 
 namespace GestaoEstudioTatuagem.ViewModels
 {
@@ -23,18 +27,37 @@ namespace GestaoEstudioTatuagem.ViewModels
             IsPasswordHidden = !IsPasswordHidden;
         }
 
-        // Comando para realizar o login
+        [ObservableProperty]
+        private string perfil; // "Cliente" ou "Tatuador"
         [RelayCommand]
         private async Task Submit()
         {
-            // Simulação de login (a lógica real de autenticação pode ser adicionada aqui)
-            if (Email == "teste@exemplo.com" && Password == "123456")
+            if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
             {
-                await Shell.Current.GoToAsync("//Dashboard");
+                await Shell.Current.DisplayAlert("Erro", "Preencha todos os campos.", "OK");
+                return;
+            }
+
+            var usuario = await App.Db.GetUsuarioByEmailAsync(Email.Trim());
+
+            if (usuario != null && usuario.SenhaHash == PasswordHelper.HashPassword(Password))
+            {
+                if (usuario.Permissoes.Contains(Perfil))
+                {
+                    // Perfil bate, navega para a tela correta:
+                    if (Perfil == "Tatuador")
+                        await Shell.Current.GoToAsync("//Dashboard");
+                    else if (Perfil == "Cliente")
+                        await Shell.Current.GoToAsync("//EscolherEStudio");
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Erro", $"Este usuário não tem permissão para logar como {Perfil}.", "OK");
+                }
             }
             else
             {
-                await Shell.Current.DisplayAlert("Erro", "Email ou senha incorretos.", "OK");
+                await Shell.Current.DisplayAlert("Erro", "Email ou senha inválidos.", "OK");
             }
         }
 
@@ -46,10 +69,18 @@ namespace GestaoEstudioTatuagem.ViewModels
         }
 
         // ✅ Comando para navegar para a Tela de Cadastro
+
         [RelayCommand]
         private async Task GoToCadastro()
         {
-            await Shell.Current.GoToAsync("//TelaDeCadastro");
+            if (string.IsNullOrWhiteSpace(Perfil))
+            {
+                await Shell.Current.DisplayAlert("Erro", "Perfil desconhecido para navegação.", "OK");
+                return;
+            }
+
+            string rota = Perfil == "Tatuador" ? "CadastroTatuador" : "CadastroCliente";
+            await Shell.Current.GoToAsync($"//{rota}");
         }
 
     }

@@ -92,7 +92,8 @@
                         FontFamily="PoppinsExtraBold"
                         CornerRadius="10"
                         HeightRequest="45"
-                        Clicked="OnProximoClicked"/>
+                        Clicked="OnProximoClicked"
+                        Command="{Binding EscolherTatuador}"/>
 
             </VerticalStackLayout>
 

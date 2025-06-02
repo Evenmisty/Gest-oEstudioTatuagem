@@ -206,5 +206,6 @@ namespace GestaoEstudioTatuagem.Helpers
         {
             return _connection.Table<FichaAnamnese>().Where(f => f.ClienteId == clienteId).ToListAsync();
         }
+
     }
 }

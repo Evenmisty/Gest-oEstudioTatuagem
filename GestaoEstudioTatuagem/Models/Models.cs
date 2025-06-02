@@ -37,12 +37,18 @@ namespace GestaoEstudioTatuagem.Models
         public int Id { get; set; }
         public string Nome { get; set; } = string.Empty;
         public string Especialidade { get; set; } = string.Empty;
+        public string Cnpj { get; set; } = string.Empty;
+        public string Endereco { get; set; } = string.Empty;
+        public string Telefone { get; set; } = string.Empty;
+        public string Instagram { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
     }
 
     public class Sessao
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        public int AgendaId { get; set; }  // FK para agenda
         public string DescricaoTatuagem { get; set; } = string.Empty;
         public DateTime DataSessao { get; set; } = DateTime.Now;
         public int ClienteId { get; set; }
@@ -59,7 +65,7 @@ namespace GestaoEstudioTatuagem.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [Ignore]
-        public List<Sessao> Sessoes { get; set; } = new();
+        public DateTime DataHora { get; set; } 
     }
 
     public class AgendamentoModel

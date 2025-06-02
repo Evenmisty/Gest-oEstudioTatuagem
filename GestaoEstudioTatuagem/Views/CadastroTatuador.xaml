@@ -131,7 +131,7 @@
 
                         <!-- Botão cadastrar -->
                         <Button Text="Cadastrar"
-                                Command="{Binding CadastrarCommand}"
+                                Command="{Binding CadastrarTatuadorCommand}"
                                 BackgroundColor="#4a755e"
                                 TextColor="White"
                                 CornerRadius="10"

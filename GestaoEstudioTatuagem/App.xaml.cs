@@ -16,21 +16,14 @@ namespace GestaoEstudioTatuagem
             {
                 lock (_dbLock)
                 {
-                    try
-                    {
+
                         return _db ??= new SQLiteDatabaseHelper(
                             Path.Combine(
                                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                                 "banco_sqlite_tatuagens.db3"
                             ));
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Erro ao inicializar o banco de dados: {ex.Message}");
-                        return null;
-                    }
                 }
-            }
+            }         
         }
 
         public App()

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:GestaoEstudioTatuagem.ViewModels"
+    x:Class="GestaoEstudioTatuagem.Views.EscolherTatuador"
+    Title="Escolher Tatuador">
+
+    <!-- ViewModel associada -->
+    <ContentPage.BindingContext>
+        <viewmodel:EscolherTatuadorViewModel />
+    </ContentPage.BindingContext>
+
+    <!-- IMAGEM DE FUNDO -->
+    <Grid>
+        <Image Source="plano_de_fundo.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"/>
+
+        <!-- CARD CLARO -->
+        <Frame BackgroundColor="#e3dcce"
+               CornerRadius="25"
+               Padding="20"
+               Margin="20"
+               HasShadow="True"
+               VerticalOptions="Center"
+               HorizontalOptions="Center">
+
+            <!-- LAYOUT PRINCIPAL -->
+            <VerticalStackLayout Spacing="20">
+
+                <!-- TÍTULO -->
+                <Label Text="Escolha um Tatuador"
+                       FontSize="28"
+                       TextColor="#49423c"
+                       FontFamily="PoppinsSemiBold"
+                       HorizontalOptions="Center"/>
+
+                <!-- SUBTÍTULO -->
+                <Label Text="Selecione o Tatuador"
+                       FontSize="22"
+                       TextColor="#77453f"
+                       FontFamily="Questrial"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+
+                <!-- LISTA DE TATUADORES -->
+                <CollectionView ItemsSource="{Binding ListaTatuadores}"
+                                SelectionMode="Single"
+                                Margin="0,0,0,10">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="#77453f"
+                                   CornerRadius="15"
+                                   Padding="15"
+                                   Margin="5"
+                                   HasShadow="False"
+                                   BorderColor="#9f8f7f">
+
+                                <Grid ColumnDefinitions="80, *"
+                                      VerticalOptions="Center">
+
+                                    <!-- FOTO DO TATUADOR -->
+                                    <Image Source="{Binding FotoUrl}"
+                                           WidthRequest="60"
+                                           HeightRequest="60"
+                                           Aspect="AspectFill"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"
+                                           Margin="0,0,10,0"/>
+
+                                    <!-- NOME DO TATUADOR -->
+                                    <Label Text="{Binding Nome}"
+                                           VerticalOptions="Center"
+                                           TextColor="#e3dcce"
+                                           FontFamily="PoppinsExtraBold"
+                                           FontSize="18"
+                                           HorizontalOptions="Start"/>
+                                </Grid>
+
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+                <!-- BOTÃO PRÓXIMO -->
+                <Button Text="Próximo"
+                        BackgroundColor="#4a755e"
+                        TextColor="#e3dcce"
+                        FontFamily="PoppinsExtraBold"
+                        CornerRadius="10"
+                        HeightRequest="45"
+                        Clicked="OnProximoClicked"/>
+
+            </VerticalStackLayout>
+
+        </Frame>
+
+    </Grid>
+</ContentPage>

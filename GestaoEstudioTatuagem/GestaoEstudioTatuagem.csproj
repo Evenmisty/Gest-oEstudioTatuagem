@@ -81,6 +81,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Views\NovoAgendamento.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Remove="Styles\Colors.xaml" />
 	</ItemGroup>
 
@@ -97,6 +101,9 @@
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\Styles.xaml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AgendarTatuagem.xaml">
+	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\CadastroCliente.xaml">
 	    <Generator>MSBuild:Compile</Generator>
@@ -119,6 +126,12 @@
 	  <MauiXaml Update="Views\DetalhesDoTatuador.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\EscolherEstudio.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EscolherTatuador.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\FichaDeAnamnese.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -135,6 +148,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginTatuador.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NovoAgendamento.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NovoCliente.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\TatuadorPage.xaml">

@@ -7,10 +7,6 @@ namespace GestaoEstudioTatuagem
         public AppShell()
         {
             InitializeComponent();
-
-            // Registro de rotas para navegação programática
-            Routing.RegisterRoute(nameof(DetalhesDoTatuador), typeof(DetalhesDoTatuador));
-            Routing.RegisterRoute(nameof(DetalhesDoCliente), typeof(DetalhesDoCliente));
         }
     }
 }
